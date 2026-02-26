@@ -109,7 +109,7 @@ const stories = {
     },
 
     lake: {
-        background: "imgs/bg/lake.png",
+        background: "imgs/bg/lakebg.jpg",
         dialogue: [
             { speaker: "Alann", text: "Let's see my quest is to slay a giant Hermit Crab near this lak-" },
             { speaker: "Fisherman", text: "Nice day for fishing innit hu ha." },

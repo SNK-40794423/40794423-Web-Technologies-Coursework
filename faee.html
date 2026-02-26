@@ -2,19 +2,64 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eight Eyes and The Black Seal</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" type="image/x-icon" href="imgs/icons/Zari.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eight Eyes and The Black Seal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="imgs/icons/Zari.png">
 </head>
-<body>
-      <div class="map-btn forest">
+
+<body class="bodyFaee">
+    <audio id="cityOst" autoplay loop>
+    <source src="ost/FanfaresAndFlowers.mp3" type="audio/mp3">
+  </audio>
+
+  <button class="nav" id="musicBtn" onclick="toggleMusic()">Mute</button>
+  <div class="map-btn faeforest">
     <a href="forest.html"> <br>
       <button><img class="icons" src="imgs/icons/mori.png" alt="">
         <br>To Forest</button>
     </a>
   </div>
+  <div class="map-btn stable" onclick="story('stable')">
+    <button>
+      <img class="icons" src="imgs/icons/animal_character_uma_ninjin.png" alt=""><br>
+      Stable</button>
+  </div>
+
+  <div class="map-btn festival" onclick="story('festival')">
+    <button>
+      <img class="icons" src="imgs/icons/drink_sparkling_wine.png" alt=""><br>
+      Festival</button>
+  </div>
+
+  <div class="map-btn faeeGarden" onclick="story('gardenfaee')">
+    <button>
+      <img class="icons" src="imgs/icons/bg_natural_flower.jpg" alt=""><br>
+      Garden</button>
+  </div>
+
+  <div class="map-btn faeeCastle" onclick="story('faecastle')">
+    <button>
+      <img class="icons" src="imgs/icons/building_europe_kojou.png" alt=""><br>
+      Castle</button>
+  </div>
 
 </body>
+
 </html>
+
+<script>
+  function story(scene) {
+    window.location.href = "story.html?scene=" + scene;
+  }
+
+  const audio = document.getElementById("cityOst");
+  const button = document.getElementById("musicBtn");
+  audio.volume = 0.3;
+  audio.currentTime = 0;
+  function toggleMusic() {
+    audio.muted = !audio.muted;
+    button.textContent = audio.muted ? "Unmute" : "Mute";
+  }
+</script>

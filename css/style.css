@@ -24,18 +24,22 @@ body {
 .bodyCity {
   background: url('../imgs/bg/city.png') no-repeat center center;
   background-size: cover;
-  /* KEY LINE */
   background-attachment: fixed;
 }
 
 .bodyForest {
   background: url('../imgs/bg/forestBg.png') no-repeat center;
   background-size: cover;
-  /* KEY LINE */
   background-attachment: fixed;
 }
 
 .bodyGuild {
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.bodyFaee {
+  background: url('../imgs/bg/faeeBg.png') no-repeat center;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -158,6 +162,11 @@ button {
   right: 5%;
 }
 
+.faeforest {
+  bottom: 1%;
+  right: 5%;
+}
+
 .lake {
   top: 1%;
   left: 40%
@@ -196,4 +205,24 @@ button {
 .store {
   top: 20%;
   left: 5%;
+}
+
+.festival {
+  top: 30%;
+  left: 5%;
+}
+
+.stable {
+  top: 25%;
+  right: 34%;
+}
+
+.faeeCastle{
+  top: 10%;
+  left: 50%;
+}
+
+.faeeGarden{
+  top: 73%;
+  right: 54%;
 }
