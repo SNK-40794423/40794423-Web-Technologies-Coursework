@@ -182,3 +182,18 @@ button {
   top: 60%;
   right: 20%;
 }
+
+.quest {
+  bottom: 2%;
+  left: 30%;
+}
+
+.canteen {
+  top: 50%;
+  right: 5%;
+}
+
+.store {
+  top: 20%;
+  left: 5%;
+}
