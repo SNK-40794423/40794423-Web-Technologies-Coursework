@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eight Eyes and The Black Seal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="imgs/icons/Zari.png">
+</head>
+
+<body class="bodyCity">
+  <audio id="cityOst" autoplay loop>
+    <source src="ost/TheSlopesOfTheBlessure.mp3" type="audio/mp3">
+  </audio>
+
+  <button class="nav" id="musicBtn" onclick="toggleMusic()">Mute</button>
+  <br> <br>
+  <a href="index.html">
+    <button class="nav">Go Back</button>
+  </a>
+  <br>
+  <!-- Castle -->
+  <div class="map-btn castle" onclick="story('castle')">
+    <button>
+      <img class="icons" src="imgs/icons/building_europe_kojou.png" alt=""> <br>
+      Castle</button>
+  </div>
+
+  <!-- Guild -->
+  <div class="map-btn guild">
+    <a href="guild.html">
+      <button>
+        <img class="icons" src="imgs/icons/city_kabukichou.png" alt=""> <br>
+        Guild</button></a>
+  </div>
+
+  <!-- Inn -->
+  <div class="map-btn inn" onclick="story('inn')">
+    <button>
+      <img class="icons" src="imgs/icons/building_japan_kayabuki.png" alt=""> <br>
+      Inn</button>
+  </div>
+
+  <!-- Market -->
+  <div class="map-btn market" onclick="story('market')">
+    <button>
+      <img class="icons" src="imgs/icons/ichiba_marusye.png" alt=""> <br>
+      Market</button>
+  </div>
+
+  <!-- TownSquare -->
+  <div class="map-btn town" onclick="story('townsquare')">
+    <button>
+      <img class="icons" src="imgs/icons/funsui.png" alt=""> <br>
+      TownSquare</button>
+  </div>
+
+  <!-- Forest -->
+  <div class="map-btn forest">
+    <a href="forest.html"><button>
+        <img class="icons" src="imgs/icons/mori.png" alt=""><br>To Forest</button></a>
+  </div>
+
+  <!-- Port -->
+  <div class="map-btn port" onclick="story('port')">
+    <button>
+      <img class="icons" src="imgs/icons/ship_nanpasen.png" alt=""> <br>
+      Port</button>
+  </div>
+
+  <!-- Garden -->
+  <div class="map-btn garden" onclick="story('garden')">
+    <button>
+      <img class="icons" src="imgs/icons/bg_natural_flower.jpg" alt=""> <br>
+      Garden</button>
+  </div>
+
+  <script>
+    function story(scene) {
+      window.location.href = "story.html?scene=" + scene;
+    }
+
+    const audio = document.getElementById("cityOst");
+    const button = document.getElementById("musicBtn");
+    audio.volume = 0.3;
+    function toggleMusic() {
+      audio.muted = !audio.muted;
+      button.textContent = audio.muted ? "Unmute" : "Mute";
+    }
+  </script>
+</body>
+
+</html>

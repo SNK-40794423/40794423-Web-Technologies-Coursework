@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Prologue</title>
+  <link rel="stylesheet" href="css/prologueStyle.css">
+  <link rel="icon" type="image/x-icon" href="imgs/icons/Zari.png">
+</head>
+
+<body>
+
+  <audio id="prost" autoplay loop>
+    <source src="ost/memeshikute.mp3" type="audio/mp3">
+  </audio>
+
+  <button id="musicBtn" onclick="toggleMusic()">Mute</button>
+
+  <div class="container">
+
+    <div class="story-box">
+      <div class="story-content">
+        <h1>Prologue</h1>
+
+        <p class="wp-block-paragraph">Unmanly, unmanly<br>It hurts to be unmanly</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">Were you just making fun of me?<br>Even though you said you were so in love with
+          me<br>What’s so great about that guy?<br>Don’t you need me anymore?</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">I want to dance hand in hand with you<br>In the middle of the crowd<br>Your smile
+          is the only one shining</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">I want to be loved, but I overlooked your signal<br>Send it to me once
+          again<br>Are you fickle? Well, I don’t care<br>I just want to be with you</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">Unmanly, unmanly<br>Let the light shine on me<br>Unmanly, unmanly<br>As I sing a
+          love song<br>Unmanly, unmanly<br>I’ve finally made it this far, but in this world<br>Unmanly, unmanly<br>It
+          hurts to be unmanly</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">Today, let’s dance and try to forget<br>About yesterday’s old worries<br>Who are
+          you with? Who will it be next?<br>Sharing your hearts over drinks</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">In truth, I want to sleep holding you tight<br>Please hydrate my parched, thirsty
+          heart<br>With your beauty</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">I long for love, but I always mess it up<br>Women’s hearts are like clouds<br>When
+          I’m in love it’s sunny, but my narrow heart<br>Soon turns jealous again</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">Unmanly, unmanly<br>Watching you with him<br>Unmanly, unmanly<br>Seeing you
+          smile<br>Unmanly, unmanly<br>As you touch his hand<br>My heart is already<br>Unmanly, unmanly<br>It hurts to
+          be unmanly</p>
+
+        <br>
+
+        <p class="wp-block-paragraph"><em>Okay everybody!<sup>(2)</sup></em><br>You have to have fun in
+          life,<em>&nbsp;fall in love</em><br>But&nbsp;<em>I’m proud</em>&nbsp;to just be enjoying myself all the
+          time!<br>Sorry for being born,&nbsp;<em>ready tonight!</em><br>But I’m life-sized!<br><em>Guitar
+            solo!</em>&nbsp;Kyan Yutaka!</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">I love you, or rather, I just want you<br>My heart is like a dog<br>Go ahead and
+          cheat on me, it’s fine<br>As long as I can be with you<br>I want to be loved, but I overlooked your
+          signal<br>Send it to me once again<br>Are you fickle? Well, I don’t care<br>I just want to be with you</p>
+
+        <br>
+
+        <p class="wp-block-paragraph">Unmanly, unmanly<br>Let the light shine on me<br>Unmanly, unmanly<br>As I sing a
+          love song<br>Unmanly, unmanly<br>I’ve finally made it this far, but in this world<br>Unmanly, unmanly<br>It
+          hurts to be unmanly</p>
+
+
+      </div>
+
+      <div class="story-button">
+        <a href="city.html">
+          <button>Click here to begin the story</button>
+        </a>
+      </div>
+
+    </div>
+    <a href="index.html">
+      <button>GO back to index</button>
+    </a>
+  </div>
+
+</body>
+
+</html>
+<script>
+  const audio = document.getElementById("prost");
+  const button = document.getElementById("musicBtn");
+  audio.volume = 0.1;
+  function toggleMusic() {
+    audio.muted = !audio.muted;
+    button.textContent = audio.muted ? "Unmute" : "Mute";
+  }
+</script>

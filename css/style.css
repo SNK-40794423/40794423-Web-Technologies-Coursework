@@ -1,0 +1,184 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+@font-face {
+  font-family: 'edoSz';
+  src: url('../font/edosz.ttf') format('truetype');
+}
+
+h2 {
+  font-family: 'edoSz';
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.bodyCity {
+  background: url('../imgs/bg/city.png') no-repeat center center;
+  background-size: cover;
+  /* KEY LINE */
+  background-attachment: fixed;
+}
+
+.bodyForest {
+  background: url('../imgs/bg/forestBg.png') no-repeat center;
+  background-size: cover;
+  /* KEY LINE */
+  background-attachment: fixed;
+}
+
+.bodyGuild {
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.text,
+.text-block {
+  line-height: 1.6;
+}
+
+button {
+  padding: 12px;
+  font-size: 19px;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: rgba(250, 235, 215, 0);
+  cursor: pointer;
+  border: none;
+  /*background-color: rgba(250, 235, 215, 0.753);
+  border: 3px outset goldenrod;*/
+  color: rgb(0, 0, 0);
+}
+
+.nav {
+  background-color: antiquewhite;
+  border: gold 2px outset;
+  color: black;
+}
+
+.menu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 10;
+}
+
+.menu button {
+  width: 150px;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: antiquewhite;
+  transition: 0.3s;
+}
+
+.menu button:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+.map-btn {
+  position: absolute;
+  border-radius: 8px;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.575);
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 10px;
+  border: none;
+}
+
+.map-btn button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 70px gold;
+  background-color: rgba(255, 217, 0, 0.356);
+}
+
+.icons {
+  max-width: 60px;
+  max-height: 60px;
+  filter:
+    drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white);
+}
+
+.castle {
+  top: 22%;
+  right: 40%;
+}
+
+.town {
+  top: 55%;
+  left: 68%;
+}
+
+.guild {
+  top: 75%;
+  left: 45%;
+}
+
+.getOut {
+  left: 50%;
+  top: 1%;
+}
+
+.market {
+  bottom: 29%;
+  left: 10%;
+}
+
+.inn {
+  bottom: 25%;
+  right: 15%;
+}
+
+.port {
+  bottom: 38%;
+  right: 42%;
+}
+
+.garden {
+  top: 38%;
+  right: 25%;
+}
+
+.forest {
+  top: 40%;
+  right: 5%;
+}
+
+.lake {
+  top: 1%;
+  left: 40%
+}
+
+.faee {
+  top: 40%;
+  right: 1%
+}
+
+.ravine {
+  top: 50%;
+  left: 35%;
+}
+
+.toCity {
+  top: 55%;
+  left: 2%;
+}
+
+.dungeon {
+  top: 60%;
+  right: 20%;
+}

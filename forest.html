@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eight Eyes and The Black Seal</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/x-icon" href="imgs/icons/Zari.png">
+</head>
+
+<body class="bodyForest">
+  <audio id="cityOst" autoplay loop>
+    <source src="ost/Cobblestone_Village.mp3" type="audio/mp3">
+  </audio>
+
+  <button class="nav" id="musicBtn" onclick="toggleMusic()">Mute</button>
+  <br> <br>
+  <a href="index.html">
+    <button class="nav">Go Back</button>
+  </a>
+  <br>
+  <br>
+  <div class="map-btn toCity">
+    <a href="city.html">
+      <button>
+        <img class="icons" src="imgs/icons/buiding_iwate_ginkou.png" alt=""><br>
+        To City</button>
+    </a>
+  </div>
+  <!-- Castle -->
+  <div class="map-btn lake" onclick="story('lake')">
+    <button>
+      <img class="icons" src="imgs/icons/mizuumi.png" alt=""> <br>
+      Lake</button>
+  </div>
+
+  <div class="map-btn faee">
+    <a href="faee.html"> <br>
+      <button>To Faee</button>
+    </a>
+  </div>
+
+  <div class="map-btn ravine" onclick="story('ravine')">
+    <button>
+      <img class="icons" src="imgs/icons/yama_kiri.png" alt=""><br>
+      Ravine</button>
+  </div>
+
+  <div class="map-btn dungeon">
+    <a href="battle.html">
+      <button>
+        <img class="icons" src="imgs/icons/mon_gate_western_close.png" alt=""><br>
+        Dungeon
+      </button>
+    </a>
+  </div>
+
+</body>
+
+</html>
+<script>
+  function story(scene) {
+    window.location.href = "story.html?scene=" + scene;
+  }
+
+  const audio = document.getElementById("cityOst");
+  const button = document.getElementById("musicBtn");
+  audio.volume = 0.1;
+  audio.currentTime = 2;
+  function toggleMusic() {
+    audio.muted = !audio.muted;
+    button.textContent = audio.muted ? "Unmute" : "Mute";
+  }
+</script>

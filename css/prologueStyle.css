@@ -1,0 +1,70 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+@font-face {
+  font-family: 'edoSz';
+  src: url('../font/edosz.ttf') format('truetype');
+}
+
+h1 {
+  font-family: 'edoSz';
+  text-align: center;
+}
+
+body {
+  background-image: url('../imgs/bg/paperTexture.png');
+  background-color: rgb(95, 70, 49);
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  max-width: 1500px;
+  width: 1300px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.story-box {
+  background: #f5f5f5;
+  border: 2px solid #000;
+  padding: 50px;
+  min-height: 600px;
+  position: relative;
+}
+
+.story-content {
+  line-height: 1.8;
+  font-size: 18px;
+}
+
+/* Button positioned bottom-right */
+.story-button {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+}
+
+.story-button button {
+  padding: 14px 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background-color: #6c757d;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story-button button:hover {
+  transform: scale(1.05);
+  background-color: black;
+  box-shadow: 0 0 25px white;
+}
