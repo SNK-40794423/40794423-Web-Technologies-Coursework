@@ -18,7 +18,8 @@ const characters = {
     Merchant: "imgs/chara/Merchant.png",
     Fisherman: "imgs/chara/fisherman.png",
     MysteriousPerson: "imgs/chara/samurai_yasuke.png",
-    Kuma: "imgs/chara/kuma.png"
+    Kuma: "imgs/chara/kuma.png",
+    Horse: "imgs/chara/eto_uma_kotatsu.png"
 };
 
 let activeCharacters = [];
@@ -146,6 +147,14 @@ const stories = {
             { speaker: "Ed", text: "Why are you guys looking like that. Is there a giant bear behind me? Stop joking around keep on moving come on." },
             { speaker: "Kuma", text: "<ゴホッ>" },
             { speaker: "Ed", text: "SO IT WAS A WARNING." }
+        ]
+    },
+
+    stable: {
+        background: "imgs/bg/stablebg.png",
+        dialogue: [
+            {speaker: "Horse", text: "zzz"},
+            {speaker: "Za'el", text: "What is that. I've never heard of horses sleeping like this."}
         ]
     }
 

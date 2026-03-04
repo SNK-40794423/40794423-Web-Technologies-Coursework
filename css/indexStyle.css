@@ -79,10 +79,14 @@ body {
 .section-one img {
   width: 100%;
   max-width: 600px;
+    justify-self: start;
 }
 
-.section-one img {
-  justify-self: start;
+.section-two .text,
+.section-two img {
+  width: 100%;
+  max-width: 600px;
+    justify-self: start;
 }
 
 .image {

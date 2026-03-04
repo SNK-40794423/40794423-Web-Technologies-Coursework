@@ -1,0 +1,113 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+@font-face {
+  font-family: 'edoSz';
+  src: url('../font/edosz.ttf') format('truetype');
+}
+
+h2 {
+  font-family: 'edoSz';
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: rgb(94, 55, 40);
+}
+
+.text,
+.text-block {
+  line-height: 1.6;
+}
+
+button {
+  padding: 12px;
+  font-size: 19px;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: rgba(68, 255, 208, 0.808);
+  cursor: pointer;
+  border: none;
+  border: 3px outset goldenrod;
+  color: rgb(0, 0, 0);
+}
+
+
+
+.menu button:hover {
+  background: white;
+  transform: scale(1.05);
+}
+
+.map-btn {
+  position: absolute;
+  border-radius: 8px;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.575);
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 10px;
+  border: none;
+}
+
+.map-btn button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 70px rgb(111, 255, 236);
+  background-color: rgb(111, 255, 236,0.356);
+}
+
+.icons {
+  max-width: 60px;
+  max-height: 60px;
+  filter:
+    drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white);
+}
+
+.enemy {
+    position: absolute;
+    left: 10%;
+    top: 20%;
+}
+
+.player {
+    position: absolute;
+    top: 44%;
+    right: 13%;
+}
+
+.battleEvent {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    border: 0px;
+    background-color: bisque;
+    padding: 20px;
+
+}
+
+.dice {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+.playerImg, .enemyImg {
+  height: 700px;
+  border: 1px solid black;
+
+}
+
+.stat {
+  border: 2px solid black;
+  height: 200px;
+  width: 300px;
+  background-color: blanchedalmond;
+}

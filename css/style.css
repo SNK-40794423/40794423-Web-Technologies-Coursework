@@ -34,6 +34,7 @@ body {
 }
 
 .bodyGuild {
+  background: url('../imgs/bg/guildbg.png') no-repeat center;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -106,8 +107,8 @@ button {
 
 .map-btn button:hover {
   transform: scale(1.08);
-  box-shadow: 0 0 70px gold;
-  background-color: rgba(255, 217, 0, 0.356);
+  box-shadow: 0 0 70px rgb(111, 255, 236);
+  background-color: rgb(111, 255, 236,0.356);
 }
 
 .icons {
@@ -194,17 +195,17 @@ button {
 
 .quest {
   bottom: 2%;
-  left: 30%;
+  left: 38%;
 }
 
 .canteen {
-  top: 50%;
-  right: 5%;
+  top: 45%;
+  right: 10%;
 }
 
 .store {
   top: 20%;
-  left: 5%;
+  left: 18%;
 }
 
 .festival {
