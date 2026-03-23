@@ -60,33 +60,30 @@ body {
   align-items: center;
 }
 
-.section-one {
+.sectionone {
   grid-template-columns: 1fr 1.5fr;
-}
-
-.section-two {
-  grid-template-columns: 1.5fr 1fr;
-}
-
-.section-one {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 40px;
 }
 
-.section-one .text,
-.section-one img {
-  width: 100%;
-  max-width: 600px;
-    justify-self: start;
+.sectiontwo {
+  grid-template-columns: 1.5fr 1fr;
 }
 
-.section-two .text,
-.section-two img {
+.sectionone .text,
+.sectionone img {
   width: 100%;
   max-width: 600px;
-    justify-self: start;
+  justify-self: start;
+}
+
+.sectiontwo .text,
+.sectiontwo img {
+  width: 100%;
+  max-width: 600px;
+  justify-self: start;
 }
 
 .image {
@@ -95,7 +92,7 @@ body {
 }
 
 
-.image-box {
+.imagebox {
   width: 100%;
   background: #ccc;
   border: 2px solid #000;
@@ -138,7 +135,7 @@ img:hover {
 }
 
 .text,
-.text-block {
+.textblock {
   line-height: 1.6;
 }
 
@@ -152,7 +149,7 @@ button {
 }
 
 .primary,
-.primary-btn {
+.primarybtn {
   background-color: #1e88e5;
   color: white;
   height: 150px;
@@ -160,7 +157,7 @@ button {
 }
 
 .secondary,
-.secondary-btn {
+.secondarybtn {
   background-color: #6c757d;
   color: white;
   height: 60px;
@@ -182,7 +179,7 @@ button:hover {
   box-shadow: 0 0 50px gold;
 }
 
-.floating-buttons {
+.floatingbuttons {
   position: fixed;
   bottom: 30px;
   right: 30px;
@@ -192,20 +189,20 @@ button:hover {
   z-index: 1000;
 }
 
-.floating-buttons button {
+.floatingbuttons button {
   width: 180px;
   padding: 14px;
 }
 
 @media (max-width: 900px) {
 
-  .section-one,
-  .section-two {
+  .sectionone,
+  .sectiontwo {
     grid-template-columns: 1fr;
   }
 
   .buttons,
-  .floating-buttons {
+  .floatingbuttons {
     flex-direction: row;
   }
 }

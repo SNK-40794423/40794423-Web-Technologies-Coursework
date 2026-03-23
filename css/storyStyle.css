@@ -99,8 +99,22 @@ body {
     top: 20px;
     right: 20px;
     padding: 8px 15px;
-    background: white;
-    border: none;
     cursor: pointer;
     z-index: 15;
+}
+
+button {
+  padding: 12px;
+  font-size: 19px;
+  font-weight: bold;
+  border-radius: 8px;
+  background-color: rgba(250, 235, 215, 0);
+  cursor: pointer;
+  border: 3px outset goldenrod;
+  color: rgb(0, 0, 0);
+}
+.nav {
+  background-color: antiquewhite;
+  border: gold 2px outset;
+  color: black;
 }

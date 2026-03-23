@@ -15,10 +15,11 @@
   </audio>
 
   <button class="nav" id="musicBtn" onclick="toggleMusic()">Mute</button>
+  <button class="nav mode" id="modeToggle">Main Story</button>
   <br>
   <br>
   <br>
-  <div class="map-btn toCity">
+  <div class="mapbtn toCity">
     <a href="city.html">
       <button>
         <img class="icons" src="imgs/icons/buiding_iwate_ginkou.png" alt=""><br>
@@ -26,26 +27,26 @@
     </a>
   </div>
   <!-- Castle -->
-  <div class="map-btn lake" onclick="story('lake')">
+  <div class="mapbtn lake" onclick="handleLocation('lake')">
     <button>
       <img class="icons" src="imgs/icons/mizuumi.png" alt=""> <br>
       Lake</button>
   </div>
 
-  <div class="map-btn faee">
+  <div class="mapbtn faee">
     <a href="faee.html"> <br>
       <button><img class="icons" src="imgs/icons/gaisenmon.png" alt="">
         <br>To Faee</button>
     </a>
   </div>
 
-  <div class="map-btn ravine" onclick="story('ravine')">
+  <div class="mapbtn ravine" onclick="handleLocation('ravine')">
     <button>
       <img class="icons" src="imgs/icons/yama_kiri.png" alt=""><br>
       Ravine</button>
   </div>
 
-  <div class="map-btn dungeon">
+  <div class="mapbtn dungeon">
     <a href="battle.html">
       <button>
         <img class="icons" src="imgs/icons/mon_gate_western_close.png" alt=""><br>
@@ -55,19 +56,79 @@
   </div>
 
 </body>
-
-</html>
 <script>
-  function story(scene) {
-    window.location.href = "story.html?scene=" + scene;
-  }
+    const audio = document.getElementById("cityOst");
+    const button = document.getElementById("musicBtn");
+    audio.volume = 0.5;
+    function toggleMusic() {
+      audio.muted = !audio.muted;
+      button.textContent = audio.muted ? "Unmute" : "Mute";
+    }
+    // STORY ORDER FOR MQ
+    const mainStoryOrder = [
+      "inn",
+      "quest",
+      "townsquare",
+      "ravine",
+      "faemarket",
+      "festival",
+      "faecastle",
+      "stable"
+    ];
+    let gameState;
 
-  const audio = document.getElementById("cityOst");
-  const button = document.getElementById("musicBtn");
-  audio.volume = 0.3;
-  audio.currentTime = 2;
-  function toggleMusic() {
-    audio.muted = !audio.muted;
-    button.textContent = audio.muted ? "Unmute" : "Mute";
-  }
-</script>
+    // Try loading from localStorage
+    const saved = localStorage.getItem("gameState");
+
+    if (saved) {
+      gameState = JSON.parse(saved);
+    } else {
+      // First time player
+      gameState = {
+        mode: "main",
+        progress: 0
+      };
+
+      localStorage.setItem("gameState", JSON.stringify(gameState));
+    }
+    // ===============================
+    // MODE TOGGLE BUTTON
+    // ===============================
+    const toggleBtn = document.getElementById("modeToggle");
+
+    function updateButton() {
+      toggleBtn.textContent =
+        gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      gameState.mode = gameState.mode === "main" ? "side" : "main";
+
+      localStorage.setItem("gameState", JSON.stringify(gameState));
+
+      updateButton();
+    });
+
+    updateButton();
+
+    // ===============================
+    // LOCATION HANDLER (IMPORTANT)
+    // ===============================
+    function handleLocation(scene) {
+
+      if (gameState.mode === "main") {
+
+        const currentMQ = mainStoryOrder[gameState.progress];
+
+        if (scene === currentMQ) {
+          window.location.href = `story.html?type=main&scene=${scene}`;
+        } else {
+          alert("You haven't unlocked this yet!");
+        }
+
+      } else {
+        window.location.href = `story.html?type=side&scene=${scene}`;
+      }
+    }
+  </script>
+</html>

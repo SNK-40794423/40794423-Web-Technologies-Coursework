@@ -10,9 +10,14 @@
 </head>
 
 <body class="bodyGuild">
+    <audio id="cityOst" autoplay loop>
+        <source src="ost/The Nightingale.mp3" type="audio/mp3">
+    </audio>
+    <button class="nav" id="musicBtn" onclick="toggleMusic()">Mute</button>
+    <br> <br>
+    <button class="nav mode" id="modeToggle">Main Story</button>
 
-
-    <div class="map-btn getOut">
+    <div class="mapbtn getOut">
         <a href="city.html">
             <button>
                 <img class="icons" src="imgs/icons/door.png" alt="">
@@ -20,23 +25,98 @@
         </a>
     </div>
 
-    <div class="map-btn quest" onclick="story('quest')">
+    <div class="mapbtn quest" onclick="handleLocation('quest')">
         <button>
             <img class="icons" src="imgs/icons/book_syokendai.png" alt=""><br>
             Quest</button>
     </div>
 
-    <div class="map-btn store" onclick="story('guildStore')">
+    <div class="mapbtn store" onclick="handleLocation('guildStore')">
         <button>
             <img class="icons" src="imgs/icons/kaizoku_takarabako.png" alt=""><br>
             store</button>
     </div>
 
-    <div class="map-btn canteen" onclick="story('canteen')">
+    <div class="mapbtn canteen" onclick="handleLocation('canteen')">
         <button>
             <img class="icons" src="imgs/icons/chuuka_turntable_yamucha.png" alt=""><br>
             Canteen</button>
     </div>
 </body>
+<script>
+    const audio = document.getElementById("cityOst");
+    const button = document.getElementById("musicBtn");
+    audio.volume = 0.5;
+    function toggleMusic() {
+        audio.muted = !audio.muted;
+        button.textContent = audio.muted ? "Unmute" : "Mute";
+    }
+    // STORY ORDER FOR MQ
+    const mainStoryOrder = [
+        "inn",
+        "quest",
+        "townsquare",
+        "ravine",
+        "store",
+        "festival",
+        "faeecastle",
+        "stable"
+    ];
+    let gameState;
+
+    // Try loading from localStorage
+    const saved = localStorage.getItem("gameState");
+
+    if (saved) {
+        gameState = JSON.parse(saved);
+    } else {
+        // First time player
+        gameState = {
+            mode: "main",
+            progress: 0
+        };
+
+        localStorage.setItem("gameState", JSON.stringify(gameState));
+    }
+    // ===============================
+    // MODE TOGGLE BUTTON
+    // ===============================
+    const toggleBtn = document.getElementById("modeToggle");
+
+    function updateButton() {
+        toggleBtn.textContent =
+            gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+        gameState.mode = gameState.mode === "main" ? "side" : "main";
+
+        localStorage.setItem("gameState", JSON.stringify(gameState));
+
+        updateButton();
+    });
+
+    updateButton();
+
+    // ===============================
+    // LOCATION HANDLER (IMPORTANT)
+    // ===============================
+    function handleLocation(scene) {
+
+        if (gameState.mode === "main") {
+
+            const currentMQ = mainStoryOrder[gameState.progress];
+
+            if (scene === currentMQ) {
+                window.location.href = `story.html?type=main&scene=${scene}`;
+            } else {
+                alert("You haven't unlocked this yet!");
+            }
+
+        } else {
+            window.location.href = `story.html?type=side&scene=${scene}`;
+        }
+    }
+</script>
 
 </html>

@@ -45,8 +45,7 @@ body {
   background-attachment: fixed;
 }
 
-.text,
-.text-block {
+.text{
   line-height: 1.6;
 }
 
@@ -67,6 +66,12 @@ button {
   background-color: antiquewhite;
   border: gold 2px outset;
   color: black;
+}
+
+.mode {
+  position: absolute;
+  right: 0px;
+  top: 0px;
 }
 
 .menu {
@@ -95,7 +100,7 @@ button {
   transform: scale(1.05);
 }
 
-.map-btn {
+.mapbtn {
   position: absolute;
   border-radius: 8px;
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.575);
@@ -105,7 +110,7 @@ button {
   border: none;
 }
 
-.map-btn button:hover {
+.mapbtn button:hover {
   transform: scale(1.08);
   box-shadow: 0 0 70px rgb(111, 255, 236);
   background-color: rgb(111, 255, 236,0.356);
@@ -223,7 +228,12 @@ button {
   left: 50%;
 }
 
-.faeeGarden{
+.faeeRuins{
   top: 73%;
   right: 54%;
+}
+
+.faeeMarket{
+  top: 50%;
+  right: 20%;
 }

@@ -17,18 +17,21 @@
   <button class="nav" id="musicBtn" onclick="toggleMusic()">Mute</button>
   <br> <br>
   <a href="index.html">
-    <button class="nav">Go Back</button>
+    <button class="nav" id="reset" onclick="resetStory()">Reset Story</button>
   </a>
-  <br>
+  <br> <br>
+
+  <button class="nav mode" id="modeToggle">Main Story</button>
+
   <!-- Castle -->
-  <div class="map-btn castle" onclick="story('castle')">
+  <div class="mapbtn castle" onclick="handleLocation('castle')">
     <button>
       <img class="icons" src="imgs/icons/building_europe_kojou.png" alt=""> <br>
       Castle</button>
   </div>
 
   <!-- Guild -->
-  <div class="map-btn guild">
+  <div class="mapbtn guild">
     <a href="guild.html">
       <button>
         <img class="icons" src="imgs/icons/city_kabukichou.png" alt=""> <br>
@@ -36,57 +39,122 @@
   </div>
 
   <!-- Inn -->
-  <div class="map-btn inn" onclick="story('inn')">
+  <div class="mapbtn inn" onclick="handleLocation('inn')">
     <button>
-      <img class="icons" src="imgs/icons/building_japan_kayabuki.png" alt=""> <br>
+      <img class="icons" src="imgs/icons/building_japan_kayabuki.png"><br>
       Inn</button>
   </div>
 
   <!-- Market -->
-  <div class="map-btn market" onclick="story('market')">
+  <div class="mapbtn market" onclick="handleLocation('market')">
     <button>
       <img class="icons" src="imgs/icons/ichiba_marusye.png" alt=""> <br>
       Market</button>
   </div>
 
   <!-- TownSquare -->
-  <div class="map-btn town" onclick="story('townsquare')">
+  <div class="mapbtn town" onclick="handleLocation('townsquare')">
     <button>
       <img class="icons" src="imgs/icons/funsui.png" alt=""> <br>
       TownSquare</button>
   </div>
 
   <!-- Forest -->
-  <div class="map-btn forest">
+  <div class="mapbtn forest">
     <a href="forest.html"><button>
         <img class="icons" src="imgs/icons/mori.png" alt=""><br>To Forest</button></a>
   </div>
 
   <!-- Port -->
-  <div class="map-btn port" onclick="story('port')">
+  <div class="mapbtn port" onclick="handleLocation('port')">
     <button>
       <img class="icons" src="imgs/icons/ship_nanpasen.png" alt=""> <br>
       Port</button>
   </div>
 
   <!-- Garden -->
-  <div class="map-btn garden" onclick="story('garden')">
+  <div class="mapbtn garden" onclick="handleLocation('garden')">
     <button>
       <img class="icons" src="imgs/icons/bg_natural_flower.jpg" alt=""> <br>
       Garden</button>
   </div>
 
   <script>
-    function story(scene) {
-      window.location.href = "story.html?scene=" + scene;
-    }
-
     const audio = document.getElementById("cityOst");
     const button = document.getElementById("musicBtn");
     audio.volume = 0.5;
     function toggleMusic() {
       audio.muted = !audio.muted;
       button.textContent = audio.muted ? "Unmute" : "Mute";
+    }
+    // STORY ORDER FOR MQ
+    const mainStoryOrder = [
+      "inn",
+      "quest",
+      "townsquare",
+      "ravine",
+      "faemarket",
+      "festival",
+      "faecastle",
+      "stable"
+    ];
+    let gameState;
+
+    // Try loading from localStorage
+    const saved = localStorage.getItem("gameState");
+
+    if (saved) {
+      gameState = JSON.parse(saved);
+    } else {
+      // First time player
+      gameState = {
+        mode: "main",
+        progress: 0
+      };
+
+      localStorage.setItem("gameState", JSON.stringify(gameState));
+    }
+    // ===============================
+    // MODE TOGGLE BUTTON
+    // ===============================
+    const toggleBtn = document.getElementById("modeToggle");
+
+    function updateButton() {
+      toggleBtn.textContent =
+        gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      gameState.mode = gameState.mode === "main" ? "side" : "main";
+
+      localStorage.setItem("gameState", JSON.stringify(gameState));
+
+      updateButton();
+    });
+
+    updateButton();
+
+    // ===============================
+    // LOCATION HANDLER (IMPORTANT)
+    // ===============================
+    function handleLocation(scene) {
+
+      if (gameState.mode === "main") {
+
+        const currentMQ = mainStoryOrder[gameState.progress];
+
+        if (scene === currentMQ) {
+          window.location.href = `story.html?type=main&scene=${scene}`;
+        } else {
+          alert("You haven't unlocked this yet!");
+        }
+
+      } else {
+        window.location.href = `story.html?type=side&scene=${scene}`;
+      }
+    }
+    function resetStory(){
+      localStorage.clear();
     }
   </script>
 </body>
