@@ -45,11 +45,16 @@ const characters = {
     Zael: "imgs/chara/Za'el.png",
     Alann: "imgs/chara/Alann.png",
     Jiiva: "imgs/chara/Jiiva.png",
+    Uliet:"imgs/chara/Uliet.png",
+    Lieutenant: "imgs/chara/Lieutenant.png",
+    Knight: "imgs/chara/Knight.png",
+    KnightA: "imgs/chara/Knight.png",
+    KnightB: "imgs/chara/Knight.png",
     Merchant: "imgs/chara/Merchant.png",
     Fisherman: "imgs/chara/fisherman.png",
     MysteriousPerson: "imgs/chara/samurai_yasuke.png",
     Kuma: "imgs/chara/kuma.png",
-    Honse: "imgs/chara/eto_uma_kotatsu.png",
+    Mirako: "imgs/chara/eto_uma_kotatsu.png",
     Horse: "imgs/chara/animal_kisouma.png"
 };
 

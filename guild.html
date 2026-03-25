@@ -50,8 +50,9 @@
     function toggleMusic() {
         audio.muted = !audio.muted;
         button.textContent = audio.muted ? "Unmute" : "Mute";
+        music.pause();
     }
-    // STORY ORDER FOR MQ
+    // STORY ORDER
     const mainStoryOrder = [
         "inn",
         "quest",
@@ -60,17 +61,16 @@
         "store",
         "festival",
         "faeecastle",
-        "stable"
+        "stable",
+        "faemarket"
     ];
     let gameState;
 
-    // Try loading from localStorage
     const saved = localStorage.getItem("gameState");
 
     if (saved) {
         gameState = JSON.parse(saved);
     } else {
-        // First time player
         gameState = {
             mode: "main",
             progress: 0
@@ -78,9 +78,7 @@
 
         localStorage.setItem("gameState", JSON.stringify(gameState));
     }
-    // ===============================
     // MODE TOGGLE BUTTON
-    // ===============================
     const toggleBtn = document.getElementById("modeToggle");
 
     function updateButton() {
@@ -98,9 +96,7 @@
 
     updateButton();
 
-    // ===============================
     // LOCATION HANDLER (IMPORTANT)
-    // ===============================
     function handleLocation(scene) {
 
         if (gameState.mode === "main") {

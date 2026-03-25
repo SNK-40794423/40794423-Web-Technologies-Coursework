@@ -10,7 +10,7 @@
 </head>
 
 <body class="bodyFaee">
-    <audio id="cityOst" autoplay loop>
+  <audio id="cityOst" autoplay loop>
     <source src="ost/FanfaresAndFlowers.mp3" type="audio/mp3">
   </audio>
 
@@ -54,79 +54,74 @@
 
 </body>
 <script>
-    const audio = document.getElementById("cityOst");
-    const button = document.getElementById("musicBtn");
-    audio.volume = 0.5;
-    function toggleMusic() {
-      audio.muted = !audio.muted;
-      button.textContent = audio.muted ? "Unmute" : "Mute";
-    }
-    // STORY ORDER FOR MQ
-    const mainStoryOrder = [
-      "inn",
-      "quest",
-      "townsquare",
-      "ravine",
-      "faemarket",
-      "festival",
-      "faecastle",
-      "stable"
-    ];
-    let gameState;
+  const audio = document.getElementById("cityOst");
+  const button = document.getElementById("musicBtn");
+  audio.volume = 0.5;
+  function toggleMusic() {
+    audio.muted = !audio.muted;
+    button.textContent = audio.muted ? "Unmute" : "Mute";
+    music.pause();
+  }
+  // STORY ORDER
+  const mainStoryOrder = [
+    "inn",
+    "quest",
+    "townsquare",
+    "ravine",
+    "faemarket",
+    "festival",
+    "faecastle",
+    "stable",
+    "faemarket"
+  ];
+  let gameState;
 
-    // Try loading from localStorage
-    const saved = localStorage.getItem("gameState");
+  const saved = localStorage.getItem("gameState");
 
-    if (saved) {
-      gameState = JSON.parse(saved);
-    } else {
-      // First time player
-      gameState = {
-        mode: "main",
-        progress: 0
-      };
+  if (saved) {
+    gameState = JSON.parse(saved);
+  } else {
+    gameState = {
+      mode: "main",
+      progress: 0
+    };
 
-      localStorage.setItem("gameState", JSON.stringify(gameState));
-    }
-    // ===============================
-    // MODE TOGGLE BUTTON
-    // ===============================
-    const toggleBtn = document.getElementById("modeToggle");
+    localStorage.setItem("gameState", JSON.stringify(gameState));
+  }
+  // MODE TOGGLE BUTTON
+  const toggleBtn = document.getElementById("modeToggle");
 
-    function updateButton() {
-      toggleBtn.textContent =
-        gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
-    }
+  function updateButton() {
+    toggleBtn.textContent =
+      gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
+  }
 
-    toggleBtn.addEventListener("click", () => {
-      gameState.mode = gameState.mode === "main" ? "side" : "main";
+  toggleBtn.addEventListener("click", () => {
+    gameState.mode = gameState.mode === "main" ? "side" : "main";
 
-      localStorage.setItem("gameState", JSON.stringify(gameState));
-
-      updateButton();
-    });
+    localStorage.setItem("gameState", JSON.stringify(gameState));
 
     updateButton();
+  });
 
-    // ===============================
-    // LOCATION HANDLER (IMPORTANT)
-    // ===============================
-    function handleLocation(scene) {
+  updateButton();
+  // LOCATION HANDLER (IMPORTANT)
+  function handleLocation(scene) {
 
-      if (gameState.mode === "main") {
+    if (gameState.mode === "main") {
 
-        const currentMQ = mainStoryOrder[gameState.progress];
+      const currentMQ = mainStoryOrder[gameState.progress];
 
-        if (scene === currentMQ) {
-          window.location.href = `story.html?type=main&scene=${scene}`;
-        } else {
-          alert("You haven't unlocked this yet!");
-        }
-
+      if (scene === currentMQ) {
+        window.location.href = `story.html?type=main&scene=${scene}`;
       } else {
-        window.location.href = `story.html?type=side&scene=${scene}`;
+        alert("You haven't unlocked this yet!");
       }
-    }
-  </script>
-</html>
 
+    } else {
+      window.location.href = `story.html?type=side&scene=${scene}`;
+    }
+  }
+</script>
+
+</html>

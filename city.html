@@ -83,11 +83,12 @@
     const audio = document.getElementById("cityOst");
     const button = document.getElementById("musicBtn");
     audio.volume = 0.5;
-    function toggleMusic() {
+    function toggleMusic() {  
       audio.muted = !audio.muted;
       button.textContent = audio.muted ? "Unmute" : "Mute";
+      music.pause();
     }
-    // STORY ORDER FOR MQ
+    // STORY ORDER
     const mainStoryOrder = [
       "inn",
       "quest",
@@ -96,11 +97,11 @@
       "faemarket",
       "festival",
       "faecastle",
-      "stable"
+      "stable",
+      "faemarket"
     ];
     let gameState;
 
-    // Try loading from localStorage
     const saved = localStorage.getItem("gameState");
 
     if (saved) {
@@ -114,9 +115,7 @@
 
       localStorage.setItem("gameState", JSON.stringify(gameState));
     }
-    // ===============================
     // MODE TOGGLE BUTTON
-    // ===============================
     const toggleBtn = document.getElementById("modeToggle");
 
     function updateButton() {
@@ -133,10 +132,7 @@
     });
 
     updateButton();
-
-    // ===============================
     // LOCATION HANDLER (IMPORTANT)
-    // ===============================
     function handleLocation(scene) {
 
       if (gameState.mode === "main") {
@@ -153,7 +149,7 @@
         window.location.href = `story.html?type=side&scene=${scene}`;
       }
     }
-    function resetStory(){
+    function resetStory() {
       localStorage.clear();
     }
   </script>

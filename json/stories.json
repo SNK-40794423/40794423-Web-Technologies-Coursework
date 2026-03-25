@@ -95,55 +95,56 @@
                 }
             ]
         },
-        "ravine":{
-            "background":"imgs/bg/woods.png",
-            "dialogue":[
+        "ravine": {
+            "background": "imgs/bg/woods.png",
+            "dialogue": [
                 {
                     "speaker": "Za'el",
                     "text": "I wonder if the person behind the letter can be trusted.."
                 },
                 {
                     "speaker": "Jiiva",
-                    "text":"It is a litle bit too late to think about that we are halfway to Faee."
+                    "text": "It is a litle bit too late to think about that we are halfway to Faee."
                 },
                 {
                     "speaker": "Jiiva",
-                    "text":"And we have already spend quarter of the bag to get new resources for everything."
+                    "text": "And we have already spend quarter of the bag to get new resources for everything."
                 },
-                { "speaker": "Za'el",
-                "text":"Well yeah. But we should be worry about what kind of the person is behind the letter before we hand over the princes."
-            },
-            {
-                "speaker": "Ed",
-                "text":"I do agree. But we should be worried about how we are gonna leave the town without getting caught by the guards that will be after us like a swarm of angry bee."
-            },
-            {
-                "speaker": "Alann",
-                "text": "We should have enough time to plan a escape route if we made to Faee in a few days. We should rush before the darkness reigns over the forest."
-            },
-            {
-                "speaker": "Ed",
-                "text":"It's gonna be harsh on our horses."
-            },
-            {
-                "speaker":"Alann",
-                "text":"Less speaking start moving."
-            }
+                {
+                    "speaker": "Za'el",
+                    "text": "Well yeah. But we should be worry about what kind of the person is behind the letter before we hand over the princes."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "I do agree. But we should be worried about how we are gonna leave the town without getting caught by the guards that will be after us like a swarm of angry bee."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "We should have enough time to plan a escape route if we made to Faee in a few days. We should rush before the darkness reigns over the forest."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "It's gonna be harsh on our horses."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "Less speaking start moving."
+                }
             ]
         },
-        "faemarket":{
-            "background":"imgs/bg/thumb-1920-861521.jpg",
-            "dialogue":[
+        "faemarket": {
+            "background": "imgs/bg/thumb-1920-861521.jpg",
+            "dialogue": [
                 {
                     "speaker": "Horse",
                     "text": "<Finally we have arrived Faee, I can now rest until those finish their jobs.>"
                 },
                 {
-                    "speaker":"Jiiva",
+                    "speaker": "Jiiva",
                     "text": "I'll go check the city for secure paths first later tonight."
                 },
                 {
-                    "speaker":"Alann",
+                    "speaker": "Alann",
                     "text": "Appreciated it. Ed, Za'el and I will be planning how we move at the night of festival."
                 },
                 {
@@ -160,28 +161,367 @@
                 }
             ]
         },
-        "festival":{
-            "background":"imgs/bg/festival.png",
+        "festival": {
+            "background": "imgs/bg/festival.png",
+            "dialogue": [
+                {
+                    "speaker": "Ed",
+                    "text": "I bet Jiiva would enjoy this festival. Especially the last night."
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "It seems pretty much the same to me."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "You two focus on out mission. We weren't here to relax. Tonight is the most important night of our journey."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "You know if you're too much cautious and stiff all the time, the guards might think that your are up to something so just relax until we find the pricess and Jiiva give us the signal."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Oh there she is. THE center of this festival. Too bad she doesn't know what is hppening behind her back."
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "Thank you everyone for attending the festival. Please be at ease and enjoy this moment,"
+                },
+                {
+                    "speaker": "Peasant",
+                    "text": "Princess please bless our farm to grow more crops."
+                },
+                {
+                    "speaker": "Guards",
+                    "text": "Don't cross over the line you peasant. Know your place. Bow down before the princess."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "I bet the princess is felling a bit unconfortable now. See you soon Za'el and Alann I have some places to attend."
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "I think he is going to the princess."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "I just hope that he doesn't spill everything to her."
+                },
+                {
+                    "speaker": " ",
+                    "text": "<firework exploding in the sky>"
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "(Just how long is the festival)."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Hello there Milady, mind if I take a place besides you?"
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "Eh how did you ge-"
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Enough with those uninteresting topics. We should just enjoy this moment while it lasts Milady."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Milady do you enjoy this wine? This brand is my spefically from my hometown. This one right here is the best especially drink with "
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "Ahem-"
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Perhaps you are not that interest in the drinking. Well I guess a song will be perfect for you Milady."
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "I guess you are Ed?"
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Perdon?"
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "I am actually the one who requeted you to well \"kidnap\" me."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "HUH"
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "Shhh you don't want to alarm the guards."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Well yeah, I am sorry but how and why us?"
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "Well you four have quite a reputation in doing things successfully no matter how silly or dangerous the request sounds."
+                },
+                {
+                    "speaker": "Guards",
+                    "text": "There is an intruder in the castle ground!!!"
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "I guess that is our signal?"
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Let's go for a walk princess."
+                },
+                {
+                    "speaker": "",
+                    "text": "A loud explosion can be heard towards the castle ground along with fireworks."
+                },
+                {
+                    "speaker": "",
+                    "text": "Meanwhile the other two at the festival."
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "Alann, the guards look like they are drunk."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "I guess they aren't expecting a company tonight since previous nights are all peaceful."
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "I wonder how is Ed doing over there. He hasn't been captured by the guards right?"
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "I hope so."
+                },
+                {
+                    "speaker": "Guards",
+                    "text": "There is an intruder in the castle ground!!!"
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "It's showtime. Now where is princes-"
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "Oh there she's. She is heading towards us? and holding hand with Ed..."
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "WHY IS SHE HOLDING HANDS WITH ED"
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "I would like to know as well."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "I've returend with my princess."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Let's haste. Everything will be explained along the way."
+                },
+                {
+                    "speaker": "Guards",
+                    "text": "Guards someone kidnapped the Princess!!"
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "How did you two get out before the guards noticed."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Well the pricess seem to have her own escape route planned."
+                },
+                {
+                    "speaker": "Guards",
+                    "text": "There is the Princess, She is abducted by three."
+                },
+                {
+                    "speaker": "Knight",
+                    "text": "Stop right there. Let go of Princess!"
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "Ed you look after Princess, Za'el and I will take care of them."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Just make it quick. We don't have the whole night to ourselves."
+                }
+            ]
+        },
+        "faecastle": {
+            "background": "imgs/bg/faeNightCastle.jpg",
+            "dialogue": [
+                {
+                    "speaker": "...",
+                    "text": "Inside the castle."
+                },
+                {
+                    "speaker": "Jiiva",
+                    "text": "There really ain't that much guards in this castle. I guess they send most of their men to the festival."
+                },
+                {
+                    "speaker": "...",
+                    "text": "How is the coup plan going?"
+                },
+                {
+                    "speaker": "...",
+                    "text": "Sir everything is going according to the plan. By tonight's festival end, we can start the coup."
+                },
+                {
+                    "speaker": "Jiiva",
+                    "text": "(So this is their secret metting area? It seems the other knight is a Lieutenant.)"
+                },
+                {
+                    "speaker": "Lieutenant",
+                    "text": "Is our men ready to do it the moment festival ends?"
+                },
+                {
+                    "speaker": "Knight",
+                    "text": "Yes sir. They are in the festival with normal wear. They can act immediately at your order sir."
+                },
+                {
+                    "speaker": "Lieutenant",
+                    "text": "Good, you should take a short rest before we start the coup. The moon is going to be with us for the entire coup."
+                },
+                {
+                    "speaker": "Lieutenant",
+                    "text": "Also tell the others to finish up final touching as well. We don't want them to join the stage unprepared. And make sure you lock the castle keep just in case we lost sight of the Princess."
+                },
+                {
+                    "speaker": "Jiiva",
+                    "text": "(I should follow the knight and see what is happening over there.)"
+                },
+                {
+                    "speaker": "Knight",
+                    "text": "Guys finish up your final touches. Captain doesn't want you to slow down the coup."
+                },
+                {
+                    "speaker": "KnightA",
+                    "text": "We are fully equipped for the coup. We could even start it now if you like it."
+                },
+                {
+                    "speaker": "Jiiva",
+                    "text": "(There are a lot of them here even though the entire castle is pretty much empty.)"
+                },
+                {
+                    "speaker": "Jiiva",
+                    "text": "(This is a perfect place to start a show.)"
+                },
+                {
+                    "speaker": "Knight",
+                    "text": "Are you all prepared? We should move to our destinated spot by now."
+                },
+                {
+                    "speaker": "Jiiva",
+                    "text": "Now is the time!"
+                },
+                {
+                    "speaker": "KnightA",
+                    "text": "Who is there-"
+                },
+                {
+                    "speaker": "KnightA",
+                    "text": "Guh-"
+                },
+                {
+                    "speaker": "KnightB",
+                    "text": "An intruder? Crap he heard all our plans."
+                },
+                {
+                    "speaker": "Knight",
+                    "text": "Don't let him escape guys."
+                },
+                {
+                    "speaker": "Jiiva",
+                    "text": "Too slow! Don't think that you all can easily stop me."
+                },
+                {
+                    "speaker": "KnightB",
+                    "text": "We need reinforcements!"
+                },
+                {
+                    "speaker": "Knight",
+                    "text": "Make sure he doesn't leave the room, I am going to sound the alarm. We can't let him see another day."
+                },
+                {
+                    "speaker": "Jiiva",
+                    "text": "Guess I'll hang out with you a bit before I take my leave."
+                },
+                {
+                    "speaker": "KnightB",
+                    "text": "Don't get all cocky just because you got us by surprise."
+                }
+            ]
+        },
+        "stable": {
+            "background": "imgs/bg/stablebg.png",
+           "dialogue": [
+                {
+                    "speaker": "Za'el",
+                    "text": "I guess this is a perfrect time to fill us in Ed."
+                },
+                {
+                    "speaker": "Jiiva",
+                    "text": "I've cleared the escape path. But it will be crawling with guards if we don't move quickly. "
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "First thing first, Uliet here is the one behind the letter. It wasn't some secret country saving organization."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "Well that explains everything."
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "Sorry but I need to kept it secret until last minute for safety."
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": " I got a letter from the shadow organization saying that the knights are planning a coup and I overheard the knights while I was wandering around the castle."
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "And upon discussing with the organization in secret, they told me that you are perfect group to get me out of the kingdom safe and sound so I had them to send a letter to your guild."
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "I guess the fill in the princess plan is no longer useful."
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "Even though we thought about that for the entire night."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "This is where we will be going on our way. Make sure you got Princess out of the city safe Ed. And you still remember the place where we are supposed to meet up?"
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Don't worry I know. We'll see you three in a few days. Now go make distractions for me and Uliet."
+                }
+            ]
+        },
+        "faemarket2":{
+            "background":"imgs/bg/thumb-1920-861521.jpg",
             "dialogue":[
-                {"speaker": "Ed",
-                "text": "I bet Jiiva would enjoy this festival. Especially the last night."
-            },
-            {
-                "speaker":"Za'el",
-                "text": "It seems pretty much the same to me."
-            },
-            {
-                "speaker":"Alann",
-                "text": "You two focus on out mission. We weren't here to relax. Tonight is the most important night of our journey."
-            },
-            {
-                "speaker": "Ed",
-                "text": "You know if you're too much cautious and stiff all the time, the guards might think that your are up to something so just relax until we find the pricess and Jiiva give us the signal."
-            } 
+                
             ]
         }
-        
-        
     },
     "side": {
         "inn": {
@@ -486,14 +826,14 @@
         },
         "stable": {
             "background": "imgs/bg/stablebg.png",
-            "dialogue": [
+            "dialogue":[
                 {
-                    "speaker": "Horne",
-                    "text": "zzz"
+                    "speaker":"Mirako",
+                    "text":"ZZZ"
                 },
                 {
-                    "speaker": "Za'el",
-                    "text": "What is that. I've never heard of horses sleeping like this."
+                    "speaker":"Uliet",
+                    "text":"I don't remember horses sleeping like this."
                 }
             ]
         }
