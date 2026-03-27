@@ -132,7 +132,7 @@
                 }
             ]
         },
-        "faemarket": {
+        "faemarket_1": {
             "background": "imgs/bg/thumb-1920-861521.jpg",
             "dialogue": [
                 {
@@ -161,7 +161,7 @@
                 }
             ]
         },
-        "festival": {
+        "festival_1": {
             "background": "imgs/bg/festival.png",
             "dialogue": [
                 {
@@ -207,7 +207,11 @@
                 {
                     "speaker": "Alann",
                     "text": "I just hope that he doesn't spill everything to her."
-                },
+                }
+            ]
+        },"festival_2":{
+            "background":"imgs/bg/festival.png",
+            "dialogue":[
                 {
                     "speaker": " ",
                     "text": "<firework exploding in the sky>"
@@ -361,7 +365,8 @@
                     "text": "Just make it quick. We don't have the whole night to ourselves."
                 }
             ]
-        },
+        }
+        ,
         "faecastle": {
             "background": "imgs/bg/faeNightCastle.jpg",
             "dialogue": [
@@ -469,7 +474,7 @@
         },
         "stable": {
             "background": "imgs/bg/stablebg.png",
-           "dialogue": [
+            "dialogue": [
                 {
                     "speaker": "Za'el",
                     "text": "I guess this is a perfrect time to fill us in Ed."
@@ -516,10 +521,102 @@
                 }
             ]
         },
-        "faemarket2":{
-            "background":"imgs/bg/thumb-1920-861521.jpg",
+        "faemarket_2": {
+            "background": "imgs/bg/41654420-1542140193.png",
+            "dialogue": [
+                {
+                    "speaker": "Ed",
+                    "text": "Princess here change into those outfit so they won't notice you immediately."
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "Where do you want me to change?"
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "I guess we could use that room over there. Don't worry I will make sure no one takes a peak on you."
+                },
+                {
+                    "speaker": "Uliet",
+                    "text": "Where did you even get these outfit from?"
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Well I \"borrowed\" them from the store we run past through."
+                },
+                {
+                    "speaker": "...",
+                    "text": "I feel sorry for the owner getting their outfit stolen."
+                },
+                {
+                    "speaker": "Knight",
+                    "text": "Have you see our princess around here? She got kidnapped during the festival"
+                },
+                {
+                    "speaker": ".",
+                    "text": "Sorry me haven't seen the princess. But me did hear all the commotion from the castle."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "You done changing Uliet?"
+                },
+                {
+                    "speaker": "?",
+                    "text": "Just a bit. Also don't use my actual name in the public."
+                },
+                {
+                    "speaker": "Guine",
+                    "text":"Call me Guine while I am in my disguise."
+                },
+                {
+                    "speaker":"Ed",
+                    "text":"Well if you say so my Guine."
+                },
+                {
+                    "speaker":"Ed",
+                    "text":"Now let's move without sticking out."
+                }
+            ]
+        },"ruin":{
+            "background":"imgs/bg/ruins.png",
             "dialogue":[
-                
+                {
+                    "speaker":"Alann",
+                    "text":"Za'el are you ready?"
+                },{
+                    "speaker":"Za'el",
+                    "text":"Yeah I am prepared to make an opening once we are overwhelmed by the knghts."
+                },{
+                    "speaker":"Knight",
+                    "text":"There are here!!"
+                },{
+                    "speaker":"KnightA",
+                    "text":"Hand over our princess. If you do, there will be no more blood shed tonight."
+                },{
+                    "speaker":"Alann",
+                    "text":"Instead we will be executed in a later date."
+                },{
+                    "speaker":"Alann",
+                    "text":"Don't underestimate us! Za'el cover my back."
+                },{
+                    "speaker":"Za'el",
+                    "text":"Leave it to me."
+                },{
+                    "speaker":"Knight",
+                    "text":"Guh-"
+                },{
+                    "speaker":"KnightA",
+                    "text":"Geather our forces. They may be strong but we have numbers!"
+                },{
+                    "speaker":"Lieutenant",
+                    "text":"Let's see how skillful you two are."
+                },{
+                    "speaker":"Za'el",
+                    "text":"Alann be careful. He is an high rank officer unlike others."
+                },{
+                    "speaker":"Alann",
+                    "text":"I'll be fine with you at my back."
+                }
             ]
         }
     },
@@ -826,14 +923,14 @@
         },
         "stable": {
             "background": "imgs/bg/stablebg.png",
-            "dialogue":[
+            "dialogue": [
                 {
-                    "speaker":"Mirako",
-                    "text":"ZZZ"
+                    "speaker": "Mirako",
+                    "text": "ZZZ"
                 },
                 {
-                    "speaker":"Uliet",
-                    "text":"I don't remember horses sleeping like this."
+                    "speaker": "Uliet",
+                    "text": "I don't remember horses sleeping like this."
                 }
             ]
         }

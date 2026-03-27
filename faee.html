@@ -34,7 +34,7 @@
       Festival</button>
   </div>
 
-  <div class="mapbtn faeeRuins" onclick="handleLocation('faeruins')">
+  <div class="mapbtn faeeRuins" onclick="handleLocation('ruin')">
     <button>
       <img class="icons" src="imgs/icons/landmark_kanjou_mokuchuuretsu.png" alt=""><br>
       Ruins</button>
@@ -70,8 +70,11 @@
     "ravine",
     "faemarket",
     "festival",
+    "festival",
     "faecastle",
     "stable",
+    "faemarket",
+    "ruin",
     "faemarket"
   ];
   let gameState;
@@ -104,11 +107,38 @@
     updateButton();
   });
 
+  const storyTriggers = {
+    festival: [
+      { unlockAt: 0, scene: "festival_1" },
+      { unlockAt: 6, scene: "festival_2" }
+    ],
+    faemarket: [
+      { unlockAt: 0, scene: "faemarket_1" },
+      { unlockAt: 7, scene: "faemarket_2" },
+      { unlockAt: 10, scene: "faemarket_3" }
+    ]
+  };
+
   updateButton();
-  // LOCATION HANDLER (IMPORTANT)
+  // LOCATION HANDLER
   function handleLocation(scene) {
 
     if (gameState.mode === "main") {
+
+      if (storyTriggers[scene]) {
+
+        const versions = storyTriggers[scene];
+        let selectedScene = versions[0].scene;
+
+        versions.forEach(v => {
+          if (gameState.progress >= v.unlockAt) {
+            selectedScene = v.scene;
+          }
+        });
+
+        window.location.href = `story.html?type=main&scene=${selectedScene}`;
+        return;
+      }
 
       const currentMQ = mainStoryOrder[gameState.progress];
 

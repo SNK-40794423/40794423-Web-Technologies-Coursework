@@ -46,6 +46,7 @@ const characters = {
     Alann: "imgs/chara/Alann.png",
     Jiiva: "imgs/chara/Jiiva.png",
     Uliet:"imgs/chara/Uliet.png",
+    Guine: "imgs/chara/Guine.png",
     Lieutenant: "imgs/chara/Lieutenant.png",
     Knight: "imgs/chara/Knight.png",
     KnightA: "imgs/chara/Knight.png",
@@ -98,9 +99,7 @@ fetch("json/stories.json")
         updateDialogue();
 
     });
-// ===============================
 // SETUP CHARACTERS FOR SCENE
-// ===============================
 function updateCharacterStage(speaker) {
 
     const container = document.getElementById("story-container");
