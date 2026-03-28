@@ -209,9 +209,10 @@
                     "text": "I just hope that he doesn't spill everything to her."
                 }
             ]
-        },"festival_2":{
-            "background":"imgs/bg/festival.png",
-            "dialogue":[
+        },
+        "festival_2": {
+            "background": "imgs/bg/festival.png",
+            "dialogue": [
                 {
                     "speaker": " ",
                     "text": "<firework exploding in the sky>"
@@ -365,8 +366,7 @@
                     "text": "Just make it quick. We don't have the whole night to ourselves."
                 }
             ]
-        }
-        ,
+        },
         "faecastle": {
             "background": "imgs/bg/faeNightCastle.jpg",
             "dialogue": [
@@ -566,56 +566,105 @@
                 },
                 {
                     "speaker": "Guine",
-                    "text":"Call me Guine while I am in my disguise."
+                    "text": "Call me Guine while I am in my disguise."
                 },
                 {
-                    "speaker":"Ed",
-                    "text":"Well if you say so my Guine."
+                    "speaker": "Ed",
+                    "text": "Well if you say so my Guine."
                 },
                 {
-                    "speaker":"Ed",
-                    "text":"Now let's move without sticking out."
+                    "speaker": "Ed",
+                    "text": "Now let's move without sticking out."
                 }
             ]
-        },"ruin":{
-            "background":"imgs/bg/ruins.png",
-            "dialogue":[
+        },
+        "ruin": {
+            "background": "imgs/bg/ruins.png",
+            "dialogue": [
                 {
-                    "speaker":"Alann",
-                    "text":"Za'el are you ready?"
-                },{
-                    "speaker":"Za'el",
-                    "text":"Yeah I am prepared to make an opening once we are overwhelmed by the knghts."
-                },{
-                    "speaker":"Knight",
-                    "text":"There are here!!"
-                },{
-                    "speaker":"KnightA",
-                    "text":"Hand over our princess. If you do, there will be no more blood shed tonight."
-                },{
-                    "speaker":"Alann",
-                    "text":"Instead we will be executed in a later date."
-                },{
-                    "speaker":"Alann",
-                    "text":"Don't underestimate us! Za'el cover my back."
-                },{
-                    "speaker":"Za'el",
-                    "text":"Leave it to me."
-                },{
-                    "speaker":"Knight",
-                    "text":"Guh-"
-                },{
-                    "speaker":"KnightA",
-                    "text":"Geather our forces. They may be strong but we have numbers!"
-                },{
-                    "speaker":"Lieutenant",
-                    "text":"Let's see how skillful you two are."
-                },{
-                    "speaker":"Za'el",
-                    "text":"Alann be careful. He is an high rank officer unlike others."
-                },{
-                    "speaker":"Alann",
-                    "text":"I'll be fine with you at my back."
+                    "speaker": "Alann",
+                    "text": "Za'el are you ready?"
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "Yeah I am prepared to make an opening once we are overwhelmed by the knghts."
+                },
+                {
+                    "speaker": "Knight",
+                    "text": "There are here!!"
+                },
+                {
+                    "speaker": "KnightA",
+                    "text": "Hand over our princess. If you do, there will be no more blood shed tonight."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "Instead we will be executed in a later date."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "Don't underestimate us! Za'el cover my back."
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "Leave it to me."
+                },
+                {
+                    "speaker": "Knight",
+                    "text": "Guh-"
+                },
+                {
+                    "speaker": "KnightA",
+                    "text": "Geather our forces. They may be strong but we have numbers!"
+                },
+                {
+                    "speaker": "Lieutenant",
+                    "text": "Let's see how skillful you two are."
+                },
+                {
+                    "speaker": "Za'el",
+                    "text": "Alann be careful. He is an high rank officer unlike others."
+                },
+                {
+                    "speaker": "Alann",
+                    "text": "I'll be fine with you at my back."
+                }
+            ]
+        },
+        "faemarket_3": {
+            "background": "imgs/bg/17655014-1496746192.png",
+            "dialogue": [
+                {
+                    "speaker": "Ed",
+                    "text": "Have you been outside of the city before Guine?"
+                },
+                {
+                    "speaker": "Guine",
+                    "text": "Tonight is going to be my first time going out of the city."
+                },
+                {
+                    "speaker": "Guine",
+                    "text": "I wonder what exists outside of my city. I wanna try the food from different cities."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "Well we could travel a bit more before heading to the destinated metting spot."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "But I think we should talk about that once we have walk past the gate."
+                },
+                {
+                    "speaker": "Guine",
+                    "text": "Yeah but I am looking forward to my life outside of the gate. I'll be counting on you Ed."
+                },
+                {
+                    "speaker": "Ed",
+                    "text": "I don't think I can handle this kind of responsibility."
+                },
+                {
+                    "speaker": "...",
+                    "text": "To Be Continued.?"
                 }
             ]
         }
