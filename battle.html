@@ -2,40 +2,63 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Eight Eyes and The Black Seal</title>
-  <link rel="stylesheet" href="css/battleStyle.css">
-  <link rel="icon" type="image/x-icon" href="imgs/icons/Zari.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eight Eyes and The Black Seal</title>
+    <link rel="stylesheet" href="css/battleStyle.css">
+    <link rel="icon" type="image/x-icon" href="imgs/icons/Zari.png">
 </head>
+<audio id="battleMusic" src="ost/Paradise Lost - Granblue Fantasy OST.mp3" loop></audio>
+<audio id="victorySound" src="ost/Fanfare_for_Victory.mp3"></audio>
+<audio id="defeatSound" src="ost/yakuza-name-intro.mp3"></audio>
+
 <body>
+    <div id="overlay" class="overlay">
+        <div class="overlay-content">
+            <h2>Select Your Character</h2>
+            <select class="selection" id="playerSelect"></select>
+            <button class="confirm" id="confirmSelection">Confirm</button>
+        </div>
+    </div>
+
     <div class="container">
+
         <div class="enemy">
-            <img class="enemyImg" src="" alt="enemy.png">
+            <img class="enemyImg" id="enemyImg" src="" alt="enemy.png">
             <p class="stat" id="EnemyHP"></p>
         </div>
 
         <div class="player">
-            <img class="playerImg" src="" alt="player.png">
-            <p class="stat" id="PlayerHP"></p>
+            <img class="playerImg" id="playerImg" src="" alt="player.png">
+            <p class="stat_p" id="PlayerHP"></p>
         </div>
 
+        <hr>
 
-<hr>
+        <div class="battleEvent">
+            <p id="DiceRoll"></p>
+            <p id="EventResult"></p>
+            <p id="DealDamage"></p>
+            <p id="FinalResult"></p>
+        </div>
+        <button class="dice" id="rollBtn">Roll</button>
 
-<div class="battleEvent">
-<p id="DiceRoll"></p>
-<p id="EventResult"></p>
-<p id="DealDamage"></p>
-<p id="FinalResult"></p>
-</div>
+        <div id="endButtons" style="display:none;">
 
+            <button class="victory" id="returnBtn">
+                Return
+            </button>
+            <br>
+            <button class="retry" id="retryBtn">
+                Try Again
+            </button>
 
-<button class="dice" id="rollBtn">Roll</button>
-<button class="victory" id="return" style="display: none;">VICTORY</button>
+        </div>
 
-</div>
+    </div>
+
+    <script src="js/battle.js"></script>
 
 </body>
+
 </html>
-<script src="js/battle.js"></script>

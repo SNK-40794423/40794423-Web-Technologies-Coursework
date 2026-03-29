@@ -1,76 +1,178 @@
+// CHARACTER DATA
+const characters = {
+    Alann: {
+        name: "Alann",
+        maxHP: 200,
+        atk: 19,
+        img: "imgs/chara/Alann.png"
+    },
+    Zael: {
+        name: "Za'el",
+        maxHP: 120,
+        atk: 25,
+        img: "imgs/chara/Za'el.png"
+    },
+    Ed: {
+        name: "Ed",
+        maxHP: 150,
+        atk: 22,
+        img: "imgs/chara/Ed.png"
+    },
+    Jiiva: {
+        name: "Jiiva",
+        maxHP: 90,
+        atk: 35,
+        img: "imgs/chara/Jiiva.png"
+    }
+};
 
-// Plain Stats
+const enemies = {
+    Kuma: {
+        name: "Bear",
+        maxHP: 130,
+        atk: 25,
+        img: "imgs/chara/kuma.png"
+    },
+    Knight: {
+        name: "Knight",
+        maxHP: 110,
+        atk: 19,
+        img: "imgs/chara/Knight.png"
+    },
+    Lieutenant: {
+        name: "Lieutenant",
+        maxHP: 150,
+        atk: 25,
+        img: "imgs/chara/Lieutenant.png"
+    },
+    EruneThug: {
+        name: "Erune Thug",
+        maxHP: 100,
+        atk: 20,
+        img: "imgs/chara/3991125000.png"
+    },
+    Minotaur: {
+        name: "Minotaur",
+        maxHP: 175,
+        atk: 28,
+        img: "imgs/chara/3990780000.png"
+    },
+    FallenHalo: {
+        name: "Fallen Halo",
+        maxHP: 250,
+        atk: 11,
+        img: "imgs/chara/3990620000.png"
+    },
+    Goblin: {
+        name: "Goblin",
+        maxHP: 90,
+        atk: 23,
+        img: "imgs/chara/3990143000.png"
+    },
+    Avatar:{
+        name: "Avatar",
+        maxHP: 500,
+        atk: 1,
+        img: "imgs/chara/avatar.png"
+    }
+};
 
-
-let playerHP = 100;
-let enemyHP = 150;
-
-let playerATK = 20;
-let enemyATK = 15;
-
+// GAME STATE
+let player;
+let enemy;
 let playerTurn = true;
 let battleStarted = false;
 
+// DOM CONTENT LOADED
+document.addEventListener("DOMContentLoaded", () => {
+    const playerSelect = document.getElementById("playerSelect");
+    const confirmBtn = document.getElementById("confirmSelection");
+    const overlay = document.getElementById("overlay");
+
+    // Populate dropdown
+    for (let charKey in characters) {
+        const option = document.createElement("option");
+        option.value = charKey;
+        option.text = characters[charKey].name;
+        playerSelect.appendChild(option);
+    }
+
+    // Confirm selection
+    confirmBtn.addEventListener("click", () => {
+        const chosenPlayer = playerSelect.value;
+        const randomEnemyKey = getRandomEnemyKey();
+        loadBattle(chosenPlayer, randomEnemyKey);
+
+        // Hide overlay
+        overlay.style.display = "none";
+
+        // Start battle music immediately
+        battleMusic.currentTime = 0;
+        Audio.volume=0.3;
+        battleMusic.play();
+    });
+
+    document.getElementById("returnBtn").addEventListener("click", returnToPreviousPage);
+    document.getElementById("retryBtn").addEventListener("click", retryBattle);
+    document.getElementById("rollBtn").addEventListener("click", startBattle);
+});
 
 
-// D20 Rolls
+// RANDOM ENEMY
+function getRandomEnemyKey() {
+    const enemyKeys = Object.keys(enemies);
+    return enemyKeys[Math.floor(Math.random() * enemyKeys.length)];
+}
 
+// LOAD BATTLE
+function loadBattle(playerChoice, enemyChoice) {
+    player = {
+        ...characters[playerChoice],
+        hp: characters[playerChoice].maxHP
+    };
 
+    enemy = {
+        ...enemies[enemyChoice],
+        hp: enemies[enemyChoice].maxHP
+    };
+
+    document.querySelector(".playerImg").src = player.img;
+    document.querySelector(".enemyImg").src = enemy.img;
+
+    updateHPDisplay();
+}
+
+// DICE SYSTEM
 function diceRoll() {
     return Math.floor(Math.random() * 20) + 1;
 }
 
 function checkDiceRoll(num) {
-
     if (num === 1) return "Bad";
     else if (num <= 5) return "Fine";
     else if (num <= 10) return "Ok";
     else if (num <= 16) return "Good";
     else if (num <= 19) return "High";
-    else return "Critical"; // 20
+    else return "Critical";
 }
 
-// Dmg
-
-
+// DAMAGE SYSTEM
 function dealDamage(roll, atk, event) {
-
-    if (event === "Bad") {
-        return 0;
-    }
-
-    if (event === "Fine") {
-        return atk + (roll - 6);
-    }
-
-    if (event === "Ok") {
-        return atk + roll;
-    }
-
-    if (event === "Good") {
-        return atk + roll + 5;
-    }
-
-    if (event === "High") {
-        return atk + roll + 8;
-    }
-
-    return atk + roll + 12; // Critical
+    if (event === "Bad") return 0;
+    if (event === "Fine") return atk + (roll - 6);
+    if (event === "Ok") return atk + roll;
+    if (event === "Good") return atk + roll + 5;
+    if (event === "High") return atk + roll + 8;
+    return atk + roll + 12;
 }
 
-
-
-// UI Change
-
-
+// UI
 function updateHPDisplay() {
-    document.getElementById("PlayerHP").innerHTML = "Player HP: " + playerHP;
-    document.getElementById("EnemyHP").innerHTML = "Enemy HP: " + enemyHP;
+    document.getElementById("PlayerHP").innerHTML = player.name + " HP: " + player.hp;
+    document.getElementById("EnemyHP").innerHTML = enemy.name + " HP: " + enemy.hp;
 }
 
-// Battle
-
-
+// BATTLE LOGIC
 function startBattle() {
 
     if (!battleStarted) {
@@ -78,7 +180,9 @@ function startBattle() {
         document.getElementById("rollBtn").innerText = "Next Turn";
     }
 
-    if (playerHP <= 0 || enemyHP <= 0) return;
+    if (player.hp <= 0 || enemy.hp <= 0) return;
+
+    if (player.hp <= 0 || enemy.hp <= 0) return;
 
     let roll = diceRoll();
     let event = checkDiceRoll(roll);
@@ -89,90 +193,83 @@ function startBattle() {
 
     let damageLine = document.getElementById("DealDamage");
 
-if (playerTurn) {
+    if (playerTurn) {
+        damage = dealDamage(roll, player.atk, event);
+        enemy.hp -= damage;
+        damageLine.style.color = "teal";
 
-    damage = dealDamage(roll, playerATK, event);
-    enemyHP -= damage;
+        if (damage === 0) damageLine.innerHTML = player.name + " missed!";
+        else if (event === "Critical") damageLine.innerHTML = player.name + " dealt " + damage + " CRITICAL damage!";
+        else damageLine.innerHTML = player.name + " dealt " + damage + " damage!";
 
-    damageLine.style.color = "blue";
+        playerTurn = false;
 
-    if (damage === 0) {
-        damageLine.innerHTML = "Player missed!";
-    }
-    else if (event === "Critical") {
-        damageLine.innerHTML =
-            "Player dealt " + damage + " CRITICAL damage!";
-    }
-    else {
-        damageLine.innerHTML =
-            "Player dealt " + damage + " damage!";
-    }
+    } else {
+        damage = dealDamage(roll, enemy.atk, event);
+        player.hp -= damage;
+        damageLine.style.color = "red";
 
-    playerTurn = false;
+        if (damage === 0) damageLine.innerHTML = enemy.name + " missed!";
+        else if (event === "Critical") damageLine.innerHTML = enemy.name + " dealt " + damage + " CRITICAL damage!";
+        else damageLine.innerHTML = enemy.name + " dealt " + damage + " damage!";
 
-} else {
-
-    damage = dealDamage(roll, enemyATK, event);
-    playerHP -= damage;
-
-    damageLine.style.color = "red";
-
-    if (damage === 0) {
-        damageLine.innerHTML = "Enemy missed!";
-    }
-    else if (event === "Critical") {
-        damageLine.innerHTML =
-            "Enemy dealt " + damage + " CRITICAL damage!";
-    }
-    else {
-        damageLine.innerHTML =
-            "Enemy dealt " + damage + " damage!";
+        playerTurn = true;
     }
 
-    playerTurn = true;
-}
     // Prevent negative HP
-    if (enemyHP < 0) enemyHP = 0;
-    if (playerHP < 0) playerHP = 0;
+    if (enemy.hp < 0) enemy.hp = 0;
+    if (player.hp < 0) player.hp = 0;
 
     updateHPDisplay();
     checkBattleEnd();
 }
 
-// BATTLE END
-
+// END BATTLE
 function checkBattleEnd() {
+    const battleMusic = document.getElementById("battleMusic");
+    const victorySound = document.getElementById("victorySound");
+    const defeatSound = document.getElementById("defeatSound");
 
-    if (enemyHP <= 0) {
-        document.getElementById("FinalResult").innerHTML = "Enemy defeated!";
+    if (enemy.hp <= 0) {
+        document.getElementById("FinalResult").innerHTML = enemy.name + " defeated!";
         document.getElementById("rollBtn").disabled = true;
+        showEndButtons(true);
 
-        showReturnBtn();
+        battleMusic.pause();
+        victorySound.play();
+
+        // Gray out enemy image
+        document.querySelector(".enemyImg").classList.add("defeated");
     }
 
-    if (playerHP <= 0) {
+    if (player.hp <= 0) {
         document.getElementById("FinalResult").innerHTML = "You were defeated!";
         document.getElementById("rollBtn").disabled = true;
+        showEndButtons(false);
 
-        showReturnBtn();
+        battleMusic.pause();
+        defeatSound.play();
+
+        // Gray out player image
+        document.querySelector(".playerImg").classList.add("defeated");
     }
 }
 
-function showReturnBtn() {
-    document.getElementById("return").style.display = "inline-block";
+
+function showEndButtons(isVictory) {
+    const container = document.getElementById("endButtons");
+    const retryBtn = document.getElementById("retryBtn");
+
+    container.style.display = "flex";
+
+    if (isVictory) retryBtn.style.display = "none";
+    else retryBtn.style.display = "inline-block";
 }
 
 function returnToPreviousPage() {
     window.history.back();
 }
 
-// BUTTON LISTENER
-
-document.getElementById("rollBtn")
-    .addEventListener("click", startBattle);
-
-document.getElementById("return")
-    .addEventListener("click", returnToPreviousPage);    
-
-// Initialize HP display
-updateHPDisplay();
+function retryBattle() {
+    location.reload();
+}
