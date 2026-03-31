@@ -45,7 +45,7 @@ const characters = {
     Zael: "imgs/chara/Za'el.png",
     Alann: "imgs/chara/Alann.png",
     Jiiva: "imgs/chara/Jiiva.png",
-    Uliet:"imgs/chara/Uliet.png",
+    Uliet: "imgs/chara/Uliet.png",
     Guine: "imgs/chara/Guine.png",
     Lieutenant: "imgs/chara/Lieutenant.png",
     Knight: "imgs/chara/Knight.png",
@@ -68,7 +68,7 @@ const nameDisplay = document.getElementById("character-name");
 const background = document.getElementById("background");
 const dialogueText = document.getElementById("dialogue-text");
 
-let currentLine = 0;
+let currentLine = parseInt(localStorage.getItem("storyIndex")) || 0;
 
 function normalizeName(name) {
     return name.replace(/[^A-Za-z]/g, "");
@@ -82,7 +82,7 @@ fetch("json/stories.json")
 
         if (storyData) {
 
-            dialogue = storyData.dialogue;
+            dialogue = storyData.events || storyData.dialogue;
 
             if (storyData.background) {
                 background.src = storyData.background;
@@ -91,12 +91,14 @@ fetch("json/stories.json")
         } else {
 
             dialogue = [
-                { speaker: "Ed", text: "This story does not exist." }
+                { speaker: "Mirako", text: "To be continued." }
             ];
 
         }
 
         updateDialogue();
+
+        localStorage.removeItem("storyIndex");
 
     });
 // SETUP CHARACTERS FOR SCENE
@@ -171,10 +173,19 @@ function updateDialogue() {
         return;
     }
 
-    const currentSpeaker = dialogue[currentLine].speaker;
+    const event = dialogue[currentLine];
+
+    // 🚨 IF BATTLE → TRIGGER
+    if (event.type === "battle") {
+        triggerBattle(event.battleID);
+        return;
+    }
+
+    // NORMAL DIALOGUE
+    const currentSpeaker = event.speaker;
     const key = normalizeName(currentSpeaker);
 
-    dialogueText.textContent = dialogue[currentLine].text;
+    dialogueText.textContent = event.text;
     nameDisplay.textContent = currentSpeaker;
 
     updateCharacterStage(currentSpeaker);
@@ -204,3 +215,27 @@ document.getElementById("dialogue-box").addEventListener("click", () => {
 document.getElementById("menuBtn").addEventListener("click", () => {
     window.history.back();
 });
+
+function processStoryEvent(event) {
+
+    if (event.type === "dialogue") {
+        showDialogue(event.text);
+    }
+
+    if (event.type === "battle") {
+        triggerBattle(event.battleID);
+    }
+}
+
+function triggerBattle(battleID) {
+
+    localStorage.setItem("battleID", battleID);
+    localStorage.setItem("battleMode", "story");
+
+    // Save progress
+    localStorage.setItem("storyIndex", currentLine + 1);
+    localStorage.setItem("returnScene", scene);
+    localStorage.setItem("returnType", type);
+
+    window.location.href = "battle.html";
+}

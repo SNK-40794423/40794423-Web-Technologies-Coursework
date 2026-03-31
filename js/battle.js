@@ -1,3 +1,4 @@
+console.log("Return URL:", localStorage.getItem("returnURL"));
 // CHARACTER DATA
 const characters = {
     Alann: {
@@ -30,7 +31,7 @@ const enemies = {
     Kuma: {
         name: "Bear",
         maxHP: 130,
-        atk: 25,
+        atk: 125,
         img: "imgs/chara/kuma.png"
     },
     Knight: {
@@ -69,11 +70,46 @@ const enemies = {
         atk: 23,
         img: "imgs/chara/3990143000.png"
     },
-    Avatar:{
+    Avatar: {
         name: "Avatar",
         maxHP: 500,
         atk: 1,
         img: "imgs/chara/avatar.png"
+    }
+};
+
+const storyBattles = {
+    alann_vs_knight: {
+        player: "Alann",
+        enemy: "Knight"
+    },
+    alann_vs_lieutenant: {
+        player: "Alann",
+        enemy: "Lieutenant"
+    },
+    zael_vs_knight: {
+        player: "Zael",
+        enemy: "Minotaur"
+    },
+    ed_vs_thug: {
+        player: "Ed",
+        enemy: "EruneThug"
+    },
+    Jiiva_vs_knight: {
+        player: "Jiiva",
+        enemy: "Knight"
+    },
+    alann_vs_goblin: {
+        player: "Alann",
+        enemy: "Goblin"
+    },
+    ed_vs_kuma: {
+        player: "Ed",
+        enemy: "Kuma"
+    },
+    ed_vs_avatar: {
+        player: "Ed",
+        enemy: "Avatar"
     }
 };
 
@@ -85,38 +121,80 @@ let battleStarted = false;
 
 // DOM CONTENT LOADED
 document.addEventListener("DOMContentLoaded", () => {
+
+    const battleID = localStorage.getItem("battleID");
+
+    const overlay = document.getElementById("overlay");
     const playerSelect = document.getElementById("playerSelect");
     const confirmBtn = document.getElementById("confirmSelection");
-    const overlay = document.getElementById("overlay");
 
-    // Populate dropdown
-    for (let charKey in characters) {
-        const option = document.createElement("option");
-        option.value = charKey;
-        option.text = characters[charKey].name;
-        playerSelect.appendChild(option);
+    // STORY MODE
+    if (battleID && storyBattles[battleID]) {
+
+        const battle = storyBattles[battleID];
+
+        localStorage.setItem("lastBattleID", battleID);
+
+        loadBattle(battle.player, battle.enemy);
+
+        overlay.style.display = "none";
+        localStorage.removeItem("battleID");
+        const battleMusic = document.getElementById("battleMusic");
+        battleMusic.currentTime = 0;
+        battleMusic.volume = 0.3;
+        battleMusic.play();
+    }
+    // DUNGEON MODE
+    else {
+
+        for (let charKey in characters) {
+            const option = document.createElement("option");
+            option.value = charKey;
+            option.text = characters[charKey].name;
+            playerSelect.appendChild(option);
+        }
+
+        confirmBtn.addEventListener("click", () => {
+            localStorage.setItem("battleMode", "dungeon");
+            const chosenPlayer = playerSelect.value;
+            const randomEnemyKey = getRandomEnemyKey();
+
+            loadBattle(chosenPlayer, randomEnemyKey);
+            overlay.style.display = "none";
+
+            const battleMusic = document.getElementById("battleMusic");
+            battleMusic.currentTime = 0;
+            battleMusic.volume = 0.3;
+            battleMusic.play();
+        });
     }
 
-    // Confirm selection
-    confirmBtn.addEventListener("click", () => {
-        const chosenPlayer = playerSelect.value;
-        const randomEnemyKey = getRandomEnemyKey();
-        loadBattle(chosenPlayer, randomEnemyKey);
-
-        // Hide overlay
-        overlay.style.display = "none";
-
-        // Start battle music immediately
-        battleMusic.currentTime = 0;
-        Audio.volume=0.3;
-        battleMusic.play();
-    });
-
+    // Buttons (always active)
     document.getElementById("returnBtn").addEventListener("click", returnToPreviousPage);
     document.getElementById("retryBtn").addEventListener("click", retryBattle);
     document.getElementById("rollBtn").addEventListener("click", startBattle);
+
 });
 
+function resetBattleState() {
+
+    playerTurn = true;
+    battleStarted = false;
+
+    document.getElementById("rollBtn").disabled = false;
+    document.getElementById("rollBtn").innerText = "Roll Dice";
+
+    document.getElementById("FinalResult").innerHTML = "";
+    document.getElementById("DiceRoll").innerHTML = "";
+    document.getElementById("EventResult").innerHTML = "";
+    document.getElementById("DealDamage").innerHTML = "";
+
+    document.getElementById("endButtons").style.display = "none";
+
+    // Remove grayscale effects
+    document.querySelector(".playerImg").classList.remove("defeated");
+    document.querySelector(".enemyImg").classList.remove("defeated");
+}
 
 // RANDOM ENEMY
 function getRandomEnemyKey() {
@@ -253,6 +331,8 @@ function checkBattleEnd() {
         // Gray out player image
         document.querySelector(".playerImg").classList.add("defeated");
     }
+
+    localStorage.removeItem("battleMode");
 }
 
 
@@ -267,9 +347,37 @@ function showEndButtons(isVictory) {
 }
 
 function returnToPreviousPage() {
-    window.history.back();
+
+    const mode = localStorage.getItem("battleMode");
+    if (mode === "story") {
+
+        const scene = localStorage.getItem("returnScene");
+        const type = localStorage.getItem("returnType") || "main";
+
+        if (scene) {
+            window.location.href = `story.html?type=${type}&scene=${scene}`;
+        } else {
+            window.location.href = "index.html";
+        }
+    }
+    else {
+        window.history.back();
+    }
 }
 
 function retryBattle() {
-    location.reload();
+
+    const battleID = localStorage.getItem("lastBattleID");
+
+    if (battleID && storyBattles[battleID]) {
+
+        const battle = storyBattles[battleID];
+
+        resetBattleState();
+
+        loadBattle(battle.player, battle.enemy);
+
+    } else {
+        location.reload();
+    }
 }
