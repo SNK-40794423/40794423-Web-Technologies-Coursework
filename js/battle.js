@@ -3,24 +3,28 @@ console.log("Return URL:", localStorage.getItem("returnURL"));
 const characters = {
     Alann: {
         name: "Alann",
+        hp: 200,
         maxHP: 200,
         atk: 19,
         img: "imgs/chara/Alann.png"
     },
     Zael: {
         name: "Za'el",
+        hp: 120,
         maxHP: 120,
         atk: 25,
         img: "imgs/chara/Za'el.png"
     },
     Ed: {
         name: "Ed",
+        hp: 150,
         maxHP: 150,
         atk: 22,
         img: "imgs/chara/Ed.png"
     },
     Jiiva: {
         name: "Jiiva",
+        hp: 90,
         maxHP: 90,
         atk: 35,
         img: "imgs/chara/Jiiva.png"
@@ -30,48 +34,56 @@ const characters = {
 const enemies = {
     Kuma: {
         name: "Bear",
+        hp: 130,
         maxHP: 130,
-        atk: 125,
+        atk: 25,
         img: "imgs/chara/kuma.png"
     },
     Knight: {
         name: "Knight",
+        hp: 110,
         maxHP: 110,
         atk: 19,
         img: "imgs/chara/Knight.png"
     },
     Lieutenant: {
         name: "Lieutenant",
+        hp: 150,
         maxHP: 150,
         atk: 25,
         img: "imgs/chara/Lieutenant.png"
     },
     EruneThug: {
         name: "Erune Thug",
+        hp: 100,
         maxHP: 100,
         atk: 20,
         img: "imgs/chara/3991125000.png"
     },
     Minotaur: {
         name: "Minotaur",
+        hp: 175,
         maxHP: 175,
         atk: 28,
         img: "imgs/chara/3990780000.png"
     },
     FallenHalo: {
         name: "Fallen Halo",
+        hp: 250,
         maxHP: 250,
         atk: 11,
         img: "imgs/chara/3990620000.png"
     },
     Goblin: {
         name: "Goblin",
+        hp: 90,
         maxHP: 90,
         atk: 23,
         img: "imgs/chara/3990143000.png"
     },
     Avatar: {
         name: "Avatar",
+        hp: 500,
         maxHP: 500,
         atk: 1,
         img: "imgs/chara/avatar.png"
@@ -147,6 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // DUNGEON MODE
     else {
 
+
         for (let charKey in characters) {
             const option = document.createElement("option");
             option.value = charKey;
@@ -156,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         confirmBtn.addEventListener("click", () => {
             localStorage.setItem("battleMode", "dungeon");
+            localStorage.removeItem("lastBattleID");
             const chosenPlayer = playerSelect.value;
             const randomEnemyKey = getRandomEnemyKey();
 
@@ -204,6 +218,10 @@ function getRandomEnemyKey() {
 
 // LOAD BATTLE
 function loadBattle(playerChoice, enemyChoice) {
+
+    localStorage.setItem("lastPlayerKey", playerChoice);
+    localStorage.setItem("lastEnemyKey", enemyChoice);
+
     player = {
         ...characters[playerChoice],
         hp: characters[playerChoice].maxHP
@@ -246,8 +264,26 @@ function dealDamage(roll, atk, event) {
 
 // UI
 function updateHPDisplay() {
-    document.getElementById("PlayerHP").innerHTML = player.name + " HP: " + player.hp;
-    document.getElementById("EnemyHP").innerHTML = enemy.name + " HP: " + enemy.hp;
+    if (!player || !enemy) return;
+
+    const pMax = player.maxHP || player.maxHp; 
+    const eMax = enemy.maxHP || enemy.maxHp;
+
+    let playerPercent = (player.hp / pMax) * 100;
+    let enemyPercent = (enemy.hp / eMax) * 100;
+
+    const pBar = document.getElementById("playerHpBar");
+    if (pBar) {
+        pBar.style.width = playerPercent + "%";
+    }
+
+    const eBar = document.getElementById("enemyHpBar");
+    if (eBar) {
+        eBar.style.width = enemyPercent + "%";
+    }
+
+    document.getElementById("PlayerHP").innerHTML = player.name + " HP: " + player.hp + "<br><br>Atk: " + player.atk;
+    document.getElementById("EnemyHP").innerHTML = enemy.name + " HP: " + enemy.hp + "<br><br>Atk: " + enemy.atk;
 }
 
 // BATTLE LOGIC
@@ -281,6 +317,7 @@ function startBattle() {
         else damageLine.innerHTML = player.name + " dealt " + damage + " damage!";
 
         playerTurn = false;
+
 
     } else {
         damage = dealDamage(roll, enemy.atk, event);
@@ -367,17 +404,29 @@ function returnToPreviousPage() {
 
 function retryBattle() {
 
-    const battleID = localStorage.getItem("lastBattleID");
+    const mode = localStorage.getItem("battleMode");
 
-    if (battleID && storyBattles[battleID]) {
+    resetBattleState();
 
-        const battle = storyBattles[battleID];
+    if (mode === "story") {
 
-        resetBattleState();
+        const battleID = localStorage.getItem("lastBattleID");
 
-        loadBattle(battle.player, battle.enemy);
+        if (battleID && storyBattles[battleID]) {
+            const battle = storyBattles[battleID];
+            loadBattle(battle.player, battle.enemy);
+        }
+    }
 
-    } else {
-        location.reload();
+    else {
+
+        const playerKey = localStorage.getItem("lastPlayerKey");
+        const enemyKey = localStorage.getItem("lastEnemyKey");
+
+        if (playerKey && enemyKey) {
+            loadBattle(playerKey, enemyKey);
+        } else {
+            location.reload();
+        }
     }
 }

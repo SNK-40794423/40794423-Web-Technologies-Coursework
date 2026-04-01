@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&family=Quattrocento:wght@400;700&display=swap');
+
+* {
+    font-family: 'Quattrocento', serif;
+}
+
 body {
     margin: 0;
     overflow: hidden;
@@ -104,17 +110,18 @@ body {
 }
 
 button {
-  padding: 12px;
-  font-size: 19px;
-  font-weight: bold;
-  border-radius: 8px;
-  background-color: rgba(250, 235, 215, 0);
-  cursor: pointer;
-  border: 3px outset goldenrod;
-  color: rgb(0, 0, 0);
+    padding: 12px;
+    font-size: 19px;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: rgba(250, 235, 215, 0);
+    cursor: pointer;
+    border: 3px outset goldenrod;
+    color: rgb(0, 0, 0);
 }
+
 .nav {
-  background-color: antiquewhite;
-  border: gold 2px outset;
-  color: black;
+    background-color: antiquewhite;
+    border: gold 2px outset;
+    color: black;
 }

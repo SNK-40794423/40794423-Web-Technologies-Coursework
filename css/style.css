@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&family=Quattrocento:wght@400;700&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Quattrocento', serif;
 }
 
 @font-face {
@@ -45,7 +47,7 @@ body {
   background-attachment: fixed;
 }
 
-.text{
+.text {
   line-height: 1.6;
 }
 
@@ -106,14 +108,17 @@ button {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.575);
   cursor: pointer;
   transition: 0.3s;
-  font-size: 10px;
   border: none;
+}
+
+.label {
+  font-size: 35px;
 }
 
 .mapbtn button:hover {
   transform: scale(1.08);
   box-shadow: 0 0 70px rgb(111, 255, 236);
-  background-color: rgb(111, 255, 236,0.356);
+  background-color: rgb(111, 255, 236, 0.356);
 }
 
 .icons {
@@ -149,7 +154,7 @@ button {
 }
 
 .inn {
-  bottom: 25%;
+  bottom: 20%;
   right: 15%;
 }
 
@@ -223,17 +228,17 @@ button {
   right: 34%;
 }
 
-.faeeCastle{
+.faeeCastle {
   top: 10%;
   left: 50%;
 }
 
-.faeeRuins{
+.faeeRuins {
   top: 73%;
   right: 54%;
 }
 
-.faeeMarket{
+.faeeMarket {
   top: 50%;
   right: 20%;
 }
