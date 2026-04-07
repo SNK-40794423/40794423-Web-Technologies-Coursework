@@ -257,6 +257,7 @@
         },
         "festival_2": {
             "background": "imgs/bg/festival.png",
+            "bgm": "ost/30_ancientbf_00.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -449,7 +450,6 @@
                     "text": "Just make it quick. We don't have the whole night to ourselves."
                 },
                 {
-                    "type": "dialogue",
                     "type": "battle",
                     "battleID": "alann_vs_knight"
                 },
@@ -462,6 +462,7 @@
         },
         "faecastle": {
             "background": "imgs/bg/faeNightCastle.jpg",
+            "bgm": "ost/209_akakichihei_00.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -592,6 +593,7 @@
         },
         "stable": {
             "background": "imgs/bg/stablebg.png",
+            "bgm": "ost/25_ruins_00.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -722,6 +724,7 @@
         },
         "ruin": {
             "background": "imgs/bg/ruins.png",
+            "bgm": "ost/131_battle8_00.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -782,11 +785,40 @@
                     "type": "dialogue",
                     "speaker": "Alann",
                     "text": "I'll be fine with you at my back."
+                },
+                {
+                    "type": "battle",
+                    "battleID": "zael_vs_knight"
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Lieutenant",
+                    "text": "Move, I will take care of him."
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Alann",
+                    "text": "Za'el be prepared we need to make our move soon."
+                },
+                {
+                    "type": "battle",
+                    "battleID": "alann_vs_lieutenant"
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Lieutenant",
+                    "text": "Guh. You two got skills. No wonder you dare to kidnap out princess-"
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Za'el",
+                    "text": "Now is the time!"
                 }
             ]
         },
         "faemarket_3": {
             "background": "imgs/bg/17655014-1496746192.png",
+            "bgm": "ost/217_what_makes_the_sky_blue_06.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -834,6 +866,7 @@
     "side": {
         "inn": {
             "background": "imgs/bg/innBg.png",
+            "bgm": "ost/75_event_lightly_01.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -859,6 +892,7 @@
         },
         "townsquare": {
             "background": "imgs/bg/townsquare.png",
+            "bgm": "ost/30_ancientbf_00.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -904,6 +938,7 @@
         },
         "garden": {
             "background": "imgs/bg/garden.png",
+            "bgm": "ost/75_event_lightly_01.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -922,7 +957,7 @@
                 },
                 {
                     "type": "dialogue",
-                    "speaker": "Event",
+                    "speaker": ".",
                     "text": ". . ."
                 },
                 {
@@ -944,6 +979,7 @@
         },
         "market": {
             "background": "imgs/bg/market.png",
+            "bgm": "ost/community-market-67442.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -979,6 +1015,7 @@
         },
         "castle": {
             "background": "imgs/bg/castleBg.png",
+            "bgm": "ost/25_ruins_00.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -1009,6 +1046,7 @@
         },
         "port": {
             "background": "imgs/bg/port.png",
+            "bgm": "ost/ocean-sea-soft-waves-121349.mp3",
             "dialogue": [
                 {
                     "type": "dialogue",
@@ -1044,6 +1082,7 @@
         },
         "lake": {
             "background": "imgs/bg/lakebg.jpg",
+            "bgm": "ost/ocean-sea-soft-waves-121349.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -1094,6 +1133,7 @@
         },
         "ravine": {
             "background": "imgs/bg/woods.png",
+            "bgm": "ost/44_journey_positive_01.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -1218,6 +1258,7 @@
         },
         "ruin": {
             "background": "imgs/bg/ruins.png",
+            "bgm": "ost/51_arcana_event_00.mp3",
             "events": [
                 {
                     "type": "dialogue",

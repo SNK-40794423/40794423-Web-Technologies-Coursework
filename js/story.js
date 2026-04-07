@@ -19,6 +19,8 @@ if (saved) {
     gameState = JSON.parse(saved);
 }
 
+const bgmPlayer = document.getElementById("bgm");
+
 
 function handleLocation(scene) {
 
@@ -86,6 +88,15 @@ fetch("json/stories.json")
 
             if (storyData.background) {
                 background.src = storyData.background;
+            }
+            if (storyData.bgm) {
+                bgmPlayer.src = storyData.bgm;
+                bgmPlayer.volume = 0.5;
+
+                // autoplay fix (some browsers require user interaction)
+                bgmPlayer.play().catch(() => {
+                    console.log("Autoplay blocked");
+                });
             }
 
         } else {

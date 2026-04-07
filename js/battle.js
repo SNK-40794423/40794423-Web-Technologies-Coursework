@@ -101,7 +101,7 @@ const storyBattles = {
     },
     zael_vs_knight: {
         player: "Zael",
-        enemy: "Minotaur"
+        enemy: "Knight"
     },
     ed_vs_thug: {
         player: "Ed",
