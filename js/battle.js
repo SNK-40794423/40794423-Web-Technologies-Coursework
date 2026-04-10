@@ -107,7 +107,7 @@ const storyBattles = {
         player: "Ed",
         enemy: "EruneThug"
     },
-    Jiiva_vs_knight: {
+    jiiva_vs_knight: {
         player: "Jiiva",
         enemy: "Knight"
     },

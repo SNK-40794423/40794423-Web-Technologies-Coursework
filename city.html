@@ -16,16 +16,15 @@
 
   <button class="nav" id="musicBtn" onclick="toggleMusic()">Mute</button>
   <br> <br>
-  <a href="index.html">
-    <button class="nav" id="reset" onclick="resetStory()">Reset Story</button>
-  </a>
+<a href="index.html"><button class="nav">Index</button></a> <br><br>
+<button class="nav" id="reset" onclick="resetStory()">Reset Story</button>
   <br> <br>
 
   <button class="nav mode" id="modeToggle">Main Story</button>
 
   <!-- Castle -->
   <div class="mapbtn castle" onclick="handleLocation('castle')">
-    <button  class="label">
+    <button class="label">
       <img class="icons" src="imgs/icons/building_europe_kojou.png" alt=""> <br>
       Castle</button>
   </div>
@@ -83,7 +82,7 @@
     const audio = document.getElementById("cityOst");
     const button = document.getElementById("musicBtn");
     audio.volume = 0.5;
-    function toggleMusic() {  
+    function toggleMusic() {
       audio.muted = !audio.muted;
       button.textContent = audio.muted ? "Unmute" : "Mute";
       music.pause();
@@ -96,8 +95,11 @@
       "ravine",
       "faemarket",
       "festival",
+      "festival",
       "faecastle",
       "stable",
+      "faemarket",
+      "ruin",
       "faemarket"
     ];
     let gameState;

@@ -1,4 +1,3 @@
-
 // GET SCENE FROM URL
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -39,9 +38,8 @@ function handleLocation(scene) {
     }
 }
 
-// ===============================
 // CHARACTER DATABASE
-// ===============================
+
 const characters = {
     Ed: "imgs/chara/Ed.png",
     Zael: "imgs/chara/Za'el.png",
@@ -63,9 +61,8 @@ const characters = {
 
 let activeCharacters = [];
 
-// ===============================
 // ELEMENT REFERENCES
-// ===============================
+
 const nameDisplay = document.getElementById("character-name");
 const background = document.getElementById("background");
 const dialogueText = document.getElementById("dialogue-text");
@@ -168,9 +165,8 @@ function createCharacter(key, slotIndex) {
     container.appendChild(img);
 }
 
-// ===============================
 // UPDATE DIALOGUE
-// ===============================
+
 function updateDialogue() {
 
     if (currentLine >= dialogue.length) {
@@ -178,6 +174,10 @@ function updateDialogue() {
         if (type === "main") {
             gameState.progress++;
             localStorage.setItem("gameState", JSON.stringify(gameState));
+            if (gameState.progress > 11) {
+                window.location.href = "credits.html";
+                return;
+            }
         }
 
         window.history.back();
@@ -186,12 +186,10 @@ function updateDialogue() {
 
     const event = dialogue[currentLine];
 
-    // 🚨 IF BATTLE → TRIGGER
     if (event.type === "battle") {
         triggerBattle(event.battleID);
         return;
     }
-
     // NORMAL DIALOGUE
     const currentSpeaker = event.speaker;
     const key = normalizeName(currentSpeaker);
@@ -215,9 +213,7 @@ function updateDialogue() {
     }
 }
 
-// ===============================
 // EVENTS
-// ===============================
 document.getElementById("dialogue-box").addEventListener("click", () => {
     currentLine++;
     updateDialogue();
