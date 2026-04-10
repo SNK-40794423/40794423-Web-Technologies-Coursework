@@ -12,6 +12,8 @@ body {
   height: 100%;
   background-color: rgb(94, 55, 40);
   background-image: url("../imgs/bg/flatgrass.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container {
