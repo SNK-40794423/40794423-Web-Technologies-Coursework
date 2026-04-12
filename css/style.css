@@ -36,7 +36,7 @@ body {
 }
 
 .bodyGuild {
-  background: url('../imgs/bg/guildbg.png') no-repeat center;
+  background: url('../imgs/bg/guildBg.png') no-repeat center;
   background-size: cover;
   background-attachment: fixed;
 }
