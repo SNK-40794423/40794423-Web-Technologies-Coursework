@@ -192,6 +192,7 @@ function updateDialogue() {
             }
         }
 
+
         window.history.back();
         return;
     }
