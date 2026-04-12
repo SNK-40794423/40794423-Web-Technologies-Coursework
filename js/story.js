@@ -1,4 +1,10 @@
-// GET SCENE FROM URL
+const mainStoryOrder = [
+    "inn", "quest", "townsquare", "ravine",
+    "faemarket_1", "festival_1", "festival_2",
+    "faecastle", "stable", "faemarket_2", "ruin", "faemarket_3"
+];
+
+const faeeScenes = ["faemarket_1", "festival_1", "festival_2", "faecastle", "stable", "faemarket_2", "ruin", "faemarket_3"];
 
 const urlParams = new URLSearchParams(window.location.search);
 const type = urlParams.get("type") || "main"; // default main
@@ -163,49 +169,29 @@ function createCharacter(key, slotIndex) {
     container.appendChild(img);
 }
 
-const mainStoryOrder = [
-    "inn",
-    "quest",
-    "townsquare",
-    "ravine",
-    "faemarket_1",
-    "festival_1",
-    "festival_2",
-    "faecastle",
-    "stable",
-    "faemarket_2",
-    "ruin",
-    "faemarket_3"
-];
-
-const faeeChapters = [5, 6, 7, 8, 9, 10];
-
 function updateDialogue() {
 
     if (currentLine >= dialogue.length) {
-        
         if (type === "main") {
             const expectedScene = mainStoryOrder[gameState.progress];
 
             if (scene?.toLowerCase() === expectedScene?.toLowerCase()) {
-                
-                const finishedIndex = gameState.progress;
-                
                 gameState.progress++;
                 localStorage.setItem("gameState", JSON.stringify(gameState));
 
+                // END GAME CHECK
                 if (gameState.progress >= mainStoryOrder.length) {
                     window.location.href = "credits.html";
                     return;
                 }
 
-                if (faeeChapters.includes(finishedIndex)) {
+                // REDIRECT CHECK
+                if (faeeScenes.includes(scene)) {
                     window.location.href = "faee.html";
                     return;
                 }
             }
         }
-
         window.history.back();
         return;
     }
