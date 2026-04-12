@@ -165,28 +165,30 @@ function createCharacter(key, slotIndex) {
 
 // UPDATE DIALOGUE
 
-const faeeChapters = [ 5, 6, 7, 8, 9, 10];
+const faeeChapters = [5, 6, 7, 8, 9, 10];
 
 function updateDialogue() {
 
     if (currentLine >= dialogue.length) {
-
         if (type === "main") {
-            const finishedSceneIndex = gameState.progress;
+            const currentSceneName = mainStoryOrder[gameState.progress];
 
-            gameState.progress++;
-            localStorage.setItem("gameState", JSON.stringify(gameState));
+            if (scene === currentSceneName) {
+                const finishedIndex = gameState.progress;
+                gameState.progress++;
+                localStorage.setItem("gameState", JSON.stringify(gameState));
 
-            if (faeeChapters.includes(finishedSceneIndex)) {
-                window.location.href = "faee.html";
-                return;
-            }
-            if (gameState.progress >= gameState.length) {
-                window.location.href = "credits.html";
-                return;
+                if (faeeChapters.includes(finishedIndex)) {
+                    window.location.href = "faee.html";
+                    return;
+                }
+
+                if (gameState.progress >= mainStoryOrder.length) {
+                    window.location.href = "credits.html";
+                    return;
+                }
             }
         }
-
         window.history.back();
         return;
     }
