@@ -89,8 +89,6 @@ fetch("json/stories.json")
             if (storyData.bgm) {
                 bgmPlayer.src = storyData.bgm;
                 bgmPlayer.volume = 0.5;
-
-                // autoplay fix (some browsers require user interaction)
                 bgmPlayer.play().catch(() => {
                     console.log("Autoplay blocked");
                 });
@@ -167,7 +165,7 @@ function createCharacter(key, slotIndex) {
 
 // UPDATE DIALOGUE
 
-const faeeChapters = [ 5, 6, 7, 8, 9, 10];
+const faeeChapters = [5, 6, 7, 8, 9, 10];
 
 function updateDialogue() {
 
@@ -177,7 +175,8 @@ function updateDialogue() {
             gameState.progress++;
             localStorage.setItem("gameState", JSON.stringify(gameState));
             if (faeeChapters.includes(gameState.progress)) {
-                window.location.href = "faee.html";
+                const nextScene = mainStoryOrder[gameState.progress];
+                window.location.href = `faee.html?type=main&scene=${nextScene}`;
                 return;
             }
             if (gameState.progress > 11) {
