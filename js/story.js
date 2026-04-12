@@ -167,6 +167,8 @@ function createCharacter(key, slotIndex) {
 
 // UPDATE DIALOGUE
 
+const faeeChapters = [4, 5, 6, 7, 8, 9, 10];
+
 function updateDialogue() {
 
     if (currentLine >= dialogue.length) {
@@ -174,6 +176,10 @@ function updateDialogue() {
         if (type === "main") {
             gameState.progress++;
             localStorage.setItem("gameState", JSON.stringify(gameState));
+            if (faeeChapters.includes(gameState.progress)) {
+                window.location.href = "faee.html";
+                return;
+            }
             if (gameState.progress > 11) {
                 window.location.href = "credits.html";
                 return;
