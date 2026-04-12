@@ -163,14 +163,28 @@ function createCharacter(key, slotIndex) {
     container.appendChild(img);
 }
 
-// UPDATE DIALOGUE
+const mainStoryOrder = [
+    "inn",
+    "quest",
+    "townsquare",
+    "ravine",
+    "faemarket_1",
+    "festival_1",
+    "festival_2",
+    "faecastle",
+    "stable",
+    "faemarket_2",
+    "ruin",
+    "faemarket_3"
+];
 
 const faeeChapters = [5, 6, 7, 8, 9, 10];
 
 function updateDialogue() {
-    if (currentLine >= dialogue.length) {
-        if (type === "main") {
 
+    if (currentLine >= dialogue.length) {
+        
+        if (type === "main") {
             const expectedScene = mainStoryOrder[gameState.progress];
 
             if (scene?.toLowerCase() === expectedScene?.toLowerCase()) {
@@ -192,18 +206,18 @@ function updateDialogue() {
             }
         }
 
-
         window.history.back();
         return;
     }
 
+    // DIALOGUE RENDERING CODE
     const event = dialogue[currentLine];
 
     if (event.type === "battle") {
         triggerBattle(event.battleID);
         return;
     }
-    // NORMAL DIALOGUE
+
     const currentSpeaker = event.speaker;
     const key = normalizeName(currentSpeaker);
 
@@ -212,13 +226,12 @@ function updateDialogue() {
 
     updateCharacterStage(currentSpeaker);
 
-    // Dim all
+    // Dim and Highlight characters
     document.querySelectorAll(".character").forEach(char => {
         char.style.filter = "brightness(60%)";
         char.style.zIndex = "2";
     });
 
-    // Highlight speaker
     const activeChar = document.getElementById(key);
     if (activeChar) {
         activeChar.style.filter = "brightness(100%)";
