@@ -17,38 +17,38 @@
   <button class="nav" id="musicBtn" onclick="toggleMusic()">Mute</button>
   <button class="nav mode" id="modeToggle">Main Story</button>
 
-  <div class="mapbtn faeforest">
+  <div class="mapbtn navbtn faeforest">
     <a href="forest.html"> <br>
       <button class="label"><img class="icons" src="imgs/icons/mori.png" alt="">
         <br>To Forest</button>
     </a>
   </div>
 
-  <div class="mapbtn stable" onclick="handleLocation('stable')">
+  <div class="mapbtn stable" data-scene="stable" onclick="handleLocation('stable')">
     <button class="label">
       <img class="icons" src="imgs/icons/animal_character_uma_ninjin.png" alt=""><br>
       Stable</button>
   </div>
 
-  <div class="mapbtn festival" onclick="handleLocation('festival')">
+  <div class="mapbtn festival" data-scene="festival" onclick="handleLocation('festival')">
     <button class="label">
       <img class="icons" src="imgs/icons/drink_sparkling_wine.png" alt=""><br>
       Festival</button>
   </div>
 
-  <div class="mapbtn faeeRuins" onclick="handleLocation('ruin')">
+  <div class="mapbtn faeeRuins" data-scene="ruin" onclick="handleLocation('ruin')">
     <button class="label">
       <img class="icons" src="imgs/icons/landmark_kanjou_mokuchuuretsu.png" alt=""><br>
       Ruins</button>
   </div>
 
-  <div class="mapbtn faeeCastle" onclick="handleLocation('faecastle')">
+  <div class="mapbtn faeeCastle" data-scene="faecastle" onclick="handleLocation('faecastle')">
     <button class="label">
       <img class="icons" src="imgs/icons/building_europe_kojou.png" alt=""><br>
       Castle</button>
   </div>
 
-  <div class="mapbtn faeeMarket" onclick="handleLocation('faemarket')">
+  <div class="mapbtn faeeMarket" data-scene="faemarket" onclick="handleLocation('faemarket')">
     <button class="label">
       <img class="icons" src="imgs/icons/ichiba_marusye.png" alt=""><br>
       Market</button>
@@ -101,13 +101,67 @@
       gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
   }
 
+  function getBaseScene(scene) {
+    return scene.split("_")[0];
+  }
+
+  function updateMapState() {
+
+    const isComplete = gameState.progress >= mainStoryOrder.length;
+
+    const currentMQ = mainStoryOrder[gameState.progress];
+    const currentBase = currentMQ ? getBaseScene(currentMQ) : null;
+
+    document.querySelectorAll(".mapbtn").forEach(btn => {
+
+      if (btn.classList.contains("navbtn")) return;
+
+      const scene = btn.dataset.scene;
+
+      btn.classList.remove("locked", "unlocked");
+
+      if (gameState.mode === "main") {
+
+        if (isComplete) {
+
+          const lastMQ = mainStoryOrder[mainStoryOrder.length - 1];
+          const lastBase = getBaseScene(lastMQ);
+
+          if (scene === lastBase) {
+            btn.classList.add("unlocked");
+          } else {
+            btn.classList.add("locked");
+          }
+        }
+
+        else if (scene === currentBase) {
+          btn.classList.add("unlocked");
+        }
+
+        else {
+          btn.classList.add("locked");
+        }
+
+      } else {
+        btn.classList.add("unlocked");
+      }
+
+    });
+  }
+
+
+
   toggleBtn.addEventListener("click", () => {
     gameState.mode = gameState.mode === "main" ? "side" : "main";
 
     localStorage.setItem("gameState", JSON.stringify(gameState));
 
     updateButton();
+    updateMapState();
   });
+
+  updateButton();
+  updateMapState();
 
   const storyTriggers = {
     festival: [

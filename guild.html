@@ -17,7 +17,7 @@
     <br> <br>
     <button class="nav mode" id="modeToggle">Main Story</button>
 
-    <div class="mapbtn getOut">
+    <div class="mapbtn navbtn getOut">
         <a href="city.html">
             <button class="label">
                 <img class="icons" src="imgs/icons/door.png" alt="">
@@ -25,19 +25,19 @@
         </a>
     </div>
 
-    <div class="mapbtn quest" onclick="handleLocation('quest')">
+    <div class="mapbtn quest" data-scene="quest" onclick="handleLocation('quest')">
         <button class="label">
             <img class="icons" src="imgs/icons/book_syokendai.png" alt=""><br>
             Quest</button>
     </div>
 
-    <div class="mapbtn store" onclick="handleLocation('guildStore')">
+    <div class="mapbtn store" data-scene="store" onclick="handleLocation('guildStore')">
         <button class="label">
             <img class="icons" src="imgs/icons/kaizoku_takarabako.png" alt=""><br>
             Store</button>
     </div>
 
-    <div class="mapbtn canteen" onclick="handleLocation('canteen')">
+    <div class="mapbtn canteen" data-scene="canteen" onclick="handleLocation('canteen')">
         <button class="label">
             <img class="icons" src="imgs/icons/chuuka_turntable_yamucha.png" alt=""><br>
             Canteen</button>
@@ -89,17 +89,48 @@
             gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
     }
 
+    function updateMapState() {
+
+        const currentMQ = mainStoryOrder[gameState.progress];
+
+        document.querySelectorAll(".mapbtn").forEach(btn => {
+
+            if (btn.classList.contains("navbtn")) return;
+
+            const scene = btn.dataset.scene;
+
+            btn.classList.remove("locked", "unlocked");
+
+            if (gameState.mode === "main") {
+
+                if (scene === currentMQ) {
+                    btn.classList.add("unlocked");
+                } else {
+                    btn.classList.add("locked");
+                }
+
+            } else {
+                btn.classList.add("unlocked");
+            }
+
+        });
+    }
+
+
+
     toggleBtn.addEventListener("click", () => {
         gameState.mode = gameState.mode === "main" ? "side" : "main";
 
         localStorage.setItem("gameState", JSON.stringify(gameState));
 
         updateButton();
+        updateMapState();
     });
 
     updateButton();
+    updateMapState();
 
-    // LOCATION HANDLER (IMPORTANT)
+    // LOCATION HANDLER
     function handleLocation(scene) {
 
         if (gameState.mode === "main") {

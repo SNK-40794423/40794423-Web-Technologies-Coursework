@@ -23,14 +23,14 @@
   <button class="nav mode" id="modeToggle">Main Story</button>
 
   <!-- Castle -->
-  <div class="mapbtn castle" onclick="handleLocation('castle')">
+  <div class="mapbtn castle" data-scene="castle" onclick="handleLocation('castle')">
     <button class="label">
       <img class="icons" src="imgs/icons/building_europe_kojou.png" alt=""> <br>
       Castle</button>
   </div>
 
   <!-- Guild -->
-  <div class="mapbtn guild">
+  <div class="mapbtn navbtn guild">
     <a href="guild.html">
       <button class="label">
         <img class="icons" src="imgs/icons/city_kabukichou.png" alt=""> <br>
@@ -38,41 +38,41 @@
   </div>
 
   <!-- Inn -->
-  <div class="mapbtn inn" onclick="handleLocation('inn')">
+  <div class="mapbtn inn" data-scene="inn" onclick="handleLocation('inn')">
     <button class="label">
       <img class="icons" src="imgs/icons/building_japan_kayabuki.png"><br>
       Inn</button>
   </div>
 
   <!-- Market -->
-  <div class="mapbtn market" onclick="handleLocation('market')">
+  <div class="mapbtn market" data-scene="market" onclick="handleLocation('market')">
     <button class="label">
       <img class="icons" src="imgs/icons/ichiba_marusye.png" alt=""> <br>
       Market</button>
   </div>
 
   <!-- TownSquare -->
-  <div class="mapbtn town" onclick="handleLocation('townsquare')">
+  <div class="mapbtn town" data-scene="townsquare" onclick="handleLocation('townsquare')">
     <button class="label">
       <img class="icons" src="imgs/icons/funsui.png" alt=""> <br>
       TownSquare</button>
   </div>
 
   <!-- Forest -->
-  <div class="mapbtn forest">
+  <div class="mapbtn navbtn forest">
     <a href="forest.html"><button class="label">
         <img class="icons" src="imgs/icons/mori.png" alt=""><br>To Forest</button></a>
   </div>
 
   <!-- Port -->
-  <div class="mapbtn port" onclick="handleLocation('port')">
+  <div class="mapbtn port" data-scene="port" onclick="handleLocation('port')">
     <button class="label">
       <img class="icons" src="imgs/icons/ship_nanpasen.png" alt=""> <br>
       Port</button>
   </div>
 
   <!-- Garden -->
-  <div class="mapbtn garden" onclick="handleLocation('garden')">
+  <div class="mapbtn garden" data-scene="garden" onclick="handleLocation('garden')">
     <button class="label">
       <img class="icons" src="imgs/icons/bg_natural_flower.jpg" alt=""> <br>
       Garden</button>
@@ -125,16 +125,48 @@
         gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
     }
 
+    function updateMapState() {
+
+      const currentMQ = mainStoryOrder[gameState.progress];
+
+      document.querySelectorAll(".mapbtn").forEach(btn => {
+
+        if (btn.classList.contains("navbtn")) return;
+
+        const scene = btn.dataset.scene;
+
+        btn.classList.remove("locked", "unlocked");
+
+        if (gameState.mode === "main") {
+
+          if (scene === currentMQ) {
+            btn.classList.add("unlocked");
+          } else {
+            btn.classList.add("locked");
+          }
+
+        } else {
+          btn.classList.add("unlocked");
+        }
+
+      });
+    }
+
+
+
     toggleBtn.addEventListener("click", () => {
       gameState.mode = gameState.mode === "main" ? "side" : "main";
 
       localStorage.setItem("gameState", JSON.stringify(gameState));
 
       updateButton();
+      updateMapState();
     });
 
     updateButton();
-    // LOCATION HANDLER (IMPORTANT)
+    updateMapState();
+
+    // LOCATION HANDLER
     function handleLocation(scene) {
 
       if (gameState.mode === "main") {

@@ -19,7 +19,7 @@
   <br>
   <br>
   <br>
-  <div class="mapbtn toCity">
+  <div class="mapbtn navbtn toCity">
     <a href="city.html">
       <button class="label">
         <img class="icons" src="imgs/icons/buiding_iwate_ginkou.png" alt=""><br>
@@ -27,26 +27,26 @@
     </a>
   </div>
 
-  <div class="mapbtn lake" onclick="handleLocation('lake')">
+  <div class="mapbtn lake" data-scene="lake" onclick="handleLocation('lake')">
     <button class="label">
       <img class="icons" src="imgs/icons/mizuumi.png" alt=""> <br>
       Lake</button>
   </div>
 
-  <div class="mapbtn faee">
+  <div class="mapbtn navbtn faee">
     <a href="faee.html"> <br>
       <button class="label"><img class="icons" src="imgs/icons/gaisenmon.png" alt="">
         <br>To Faee</button>
     </a>
   </div>
 
-  <div class="mapbtn ravine" onclick="handleLocation('ravine')">
+  <div class="mapbtn ravine" data-scene="ravine" onclick="handleLocation('ravine')">
     <button class="label">
       <img class="icons" src="imgs/icons/yama_kiri.png" alt=""><br>
       Ravine</button>
   </div>
 
-  <div class="mapbtn dungeon">
+  <div class="mapbtn navbtn dungeon">
     <a href="battle.html">
       <button class="label">
         <img class="icons" src="imgs/icons/mon_gate_western_close.png" alt=""><br>
@@ -103,16 +103,47 @@
       gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
   }
 
+  function updateMapState() {
+
+    const currentMQ = mainStoryOrder[gameState.progress];
+
+    document.querySelectorAll(".mapbtn").forEach(btn => {
+
+      if (btn.classList.contains("navbtn")) return;
+
+      const scene = btn.dataset.scene;
+
+      btn.classList.remove("locked", "unlocked");
+
+      if (gameState.mode === "main") {
+
+        if (scene === currentMQ) {
+          btn.classList.add("unlocked");
+        } else {
+          btn.classList.add("locked");
+        }
+
+      } else {
+        btn.classList.add("unlocked");
+      }
+
+    });
+  }
+
+
+
   toggleBtn.addEventListener("click", () => {
     gameState.mode = gameState.mode === "main" ? "side" : "main";
 
     localStorage.setItem("gameState", JSON.stringify(gameState));
 
     updateButton();
+    updateMapState();
   });
 
   updateButton();
-  // LOCATION HANDLER (IMPORTANT)
+  updateMapState();
+  // LOCATION HANDLER
   function handleLocation(scene) {
 
     if (gameState.mode === "main") {

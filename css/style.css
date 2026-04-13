@@ -111,6 +111,15 @@ button {
   border: none;
 }
 
+.mapbtn.locked {
+  filter: grayscale(100%) brightness(0.5);
+  opacity: 1;
+}
+
+.mapbtn.locked:not(.navbtn) {
+  pointer-events: none;
+}
+
 .label {
   font-size: 35px;
 }
