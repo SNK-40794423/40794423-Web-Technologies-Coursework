@@ -62,7 +62,8 @@ const characters = {
     MysteriousPerson: "imgs/chara/samurai_yasuke.png",
     Kuma: "imgs/chara/kuma.png",
     Mirako: "imgs/chara/eto_uma_kotatsu.png",
-    Horse: "imgs/chara/animal_kisouma.png"
+    Horse: "imgs/chara/animal_kisouma.png",
+    OverseaMerchant: "imgs/chara/overseaMerchant.png"
 };
 
 let activeCharacters = [];

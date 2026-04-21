@@ -2,7 +2,7 @@
     "main": {
         "inn": {
             "background": "imgs/bg/innBg.png",
-            "bgm":"ost/75_event_lightly_01.mp3",
+            "bgm": "ost/75_event_lightly_01.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -28,7 +28,7 @@
         },
         "quest": {
             "background": "imgs/bg/GuildHall.png",
-            "bgm":"ost/The Nightingale.mp3",
+            "bgm": "ost/The Nightingale.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -79,7 +79,7 @@
         },
         "townsquare": {
             "background": "imgs/bg/townsquare.png",
-            "bgm":"ost/04_kazenomachi_01.mp3",
+            "bgm": "ost/04_kazenomachi_01.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -120,7 +120,7 @@
         },
         "ravine": {
             "background": "imgs/bg/woods.png",
-            "bgm":"ost/25_ruins_00.mp3",
+            "bgm": "ost/25_ruins_00.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -166,7 +166,7 @@
         },
         "faemarket_1": {
             "background": "imgs/bg/thumb-1920-861521.jpg",
-            "bgm":"ost/TheSlopesOfTheBlessure.mp3",
+            "bgm": "ost/TheSlopesOfTheBlessure.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -202,7 +202,7 @@
         },
         "festival_1": {
             "background": "imgs/bg/festival.png",
-            "bgm":"ost/TheSlopesOfTheBlessure.mp3",
+            "bgm": "ost/TheSlopesOfTheBlessure.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -664,7 +664,7 @@
         },
         "faemarket_2": {
             "background": "imgs/bg/41654420-1542140193.png",
-            "bgm":"ost/209_akakichihei_00.mp3",
+            "bgm": "ost/209_akakichihei_00.mp3",
             "events": [
                 {
                     "type": "dialogue",
@@ -1294,6 +1294,116 @@
                     "type": "dialogue",
                     "speaker": "Ed",
                     "text": "We should learn about the things that are buried in the ruins next time."
+                }
+            ]
+        },
+        "guildStore": {
+            "background": "imgs/bg/GuildHall.png",
+            "bgm": "ost/75_event_lightly_01.mp3",
+            "events": [
+                {
+                    "type": "dialogue",
+                    "speaker": "Merchant",
+                    "text": "Welcome to the store Adventurers. What would you like to buy this time?"
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Jiiva",
+                    "text": "Do you have a new set of short swords?"
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Merchant",
+                    "text": "Well I do have new short swords."
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Jiiva",
+                    "text": "I'd like to get one. The one with the sharpest and the blade with the most durable materia-"
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Merchant",
+                    "text": "But it is a set with a long sword. You have to buy them together for the short sword."
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Jiiva",
+                    "text": "Huh. I don't need the long sword. I only want the short sword."
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Merchant",
+                    "text": "I am sorry but this is a set."
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Jiiva",
+                    "text": "Can't you just sell the short swords at the half price?"
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Merchant",
+                    "text": "Sorry boss can't do it."
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Jiiva",
+                    "text": "What am I supposed to do with two long swords?"
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Merchant",
+                    "text": "Sorry boss. A set is a set. Maybe you can buy it with your guild member?"
+                },
+                {
+                    "type": "dialogue",
+                    "speaker": "Jiiva",
+                    "text": "No one in my party uses a long sword."
+                },
+                {
+                    "type": "dialogue",
+                    "speaker":"Merchant",
+                    "text":"You will definitely find the long swords useful."
+                },
+                {
+                    "type":"dialogue",
+                    "speaker":"Jiiva",
+                    "text":"Fine. I'll have two of the sets. There better be at lease a discount."
+                },
+                {
+                    "type":"dialogue",
+                    "speaker":"Merchant",
+                    "text":"Yes boss there is a 10% discount especially for you."
+                },
+                {
+                    "type":"dialogue",
+                    "speaker":"OverseaMerchant",
+                    "text":"I got all the new goods you ordered. Here is a few short swords for your display rack. The rest will be coming later."
+                },
+                {
+                    "type":"dialogue",
+                    "speaker":"Jiiva",
+                    "text":"Can I refund this se-"
+                },{
+                    "type":"dialogue",
+                    "speaker":"Merchant",
+                    "text":"Sorry boss this store doesn't accept refunds."
+                },{
+                    "type":"dialogue",
+                    "speaker":"Jiiva",
+                    "text":"You-"
+                }
+            ]
+        },
+        "festival":{
+            "background":"imgs/sukisugi Spe fam.png",
+            "bgm":"ost/Bakuretsu Aishiteru.mp3",
+            "events": [
+                {
+                    "type":"dialogue",
+                    "speaker":"SpeFam",
+                    "text":"FEVER TIME"
                 }
             ]
         }

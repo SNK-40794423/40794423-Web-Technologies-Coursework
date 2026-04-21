@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.removeItem("battleID");
         const battleMusic = document.getElementById("battleMusic");
         battleMusic.currentTime = 0;
-        battleMusic.volume = 0.3;
+        battleMusic.volume = 0.5;
         battleMusic.play();
     }
     // DUNGEON MODE

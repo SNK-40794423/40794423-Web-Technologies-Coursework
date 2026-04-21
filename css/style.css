@@ -131,8 +131,8 @@ button {
 }
 
 .icons {
-  max-width: 60px;
-  max-height: 60px;
+  max-width: 40px;
+  max-height: 40px;
   filter:
     drop-shadow(2px 0 0 white) drop-shadow(-2px 0 0 white) drop-shadow(0 2px 0 white) drop-shadow(0 -2px 0 white);
 }
