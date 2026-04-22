@@ -1254,6 +1254,7 @@
         },
         "stable": {
             "background": "imgs/bg/stablebg.png",
+            "bgm":"ost/75_event_lightly_01.mp3",
             "events": [
                 {
                     "type": "dialogue",

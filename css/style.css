@@ -68,6 +68,7 @@ button {
   background-color: antiquewhite;
   border: gold 2px outset;
   color: black;
+  transition: transform 0.3s ease;
 }
 
 .mode {
@@ -94,8 +95,9 @@ button {
   border: none;
   cursor: pointer;
   background: antiquewhite;
-  transition: 0.3s;
+  transition: transform 0.3s ease;
 }
+
 
 .menu button:hover {
   background: white;

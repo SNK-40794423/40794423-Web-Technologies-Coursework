@@ -85,7 +85,7 @@
     function toggleMusic() {
       audio.muted = !audio.muted;
       button.textContent = audio.muted ? "Unmute" : "Mute";
-      music.pause();
+      audio.pause();
     }
     // STORY ORDER
     const mainStoryOrder = [

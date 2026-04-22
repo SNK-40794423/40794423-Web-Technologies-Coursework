@@ -83,25 +83,29 @@ button {
 .storybutton {
   position: fixed;
   bottom: 30px;
-  right: 40px;
+  right: 10px;
   z-index: 100;
 }
 
 .storybutton button {
   padding: 14px 24px;
-  font-size: 16px;
+  font-size: 30px;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0.575);
   border-radius: 6px;
-  border: 2px inset goldenrod;
+  height: 300px;
+  width: 300px;
   cursor: pointer;
-  background-color: #6c757d;
+  background-image: url("../imgs/wax seal.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .storybutton button:hover {
   transform: scale(1.05);
-  background-color: black;
-  box-shadow: 0 0 70px rgb(111, 255, 236);
+  filter:saturate(0.6)
 }
 
 .creditbox {
