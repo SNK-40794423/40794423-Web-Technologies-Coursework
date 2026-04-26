@@ -81,7 +81,7 @@ body {
 
 #text-area {
     margin-top: 20px;
-    background-image: linear-gradient(rgb(159, 220, 255), rgb(255, 255, 255) 10%,rgb(255, 255, 255) 90%,rgb(159, 220, 255));
+    background-image: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 238, 207, 0.47) 10%,rgba(255, 238, 207, 0.47) 90%,rgba(255, 255, 255, 1)), url("../imgs/bg/paperText.png");
     padding: 20px 25px;
     border-radius: 8px;
     height: 200px;
