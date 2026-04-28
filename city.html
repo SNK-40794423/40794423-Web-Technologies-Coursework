@@ -79,6 +79,7 @@
   </div>
 
   <script>
+    // Loads the ost for the website
     const audio = document.getElementById("cityOst");
     const button = document.getElementById("musicBtn");
     audio.volume = 0.5;
@@ -87,7 +88,7 @@
       button.textContent = audio.muted ? "Unmute" : "Mute";
       audio.pause();
     }
-    // STORY ORDER
+    // Stoary Order
     const mainStoryOrder = [
       "inn",
       "quest",
@@ -109,7 +110,7 @@
     if (saved) {
       gameState = JSON.parse(saved);
     } else {
-      // First time player
+      // If played for first time
       gameState = {
         mode: "main",
         progress: 0
@@ -117,7 +118,7 @@
 
       localStorage.setItem("gameState", JSON.stringify(gameState));
     }
-    // MODE TOGGLE BUTTON
+    // Change story mode
     const toggleBtn = document.getElementById("modeToggle");
 
     function updateButton() {
@@ -125,6 +126,7 @@
         gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
     }
 
+    // Gray out the non active story nodes
     function updateMapState() {
 
       const currentMQ = mainStoryOrder[gameState.progress];
@@ -166,7 +168,7 @@
     updateButton();
     updateMapState();
 
-    // LOCATION HANDLER
+    // Handles Location
     function handleLocation(scene) {
 
       if (gameState.mode === "main") {

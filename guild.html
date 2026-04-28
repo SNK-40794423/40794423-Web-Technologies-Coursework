@@ -17,6 +17,7 @@
     <br> <br>
     <button class="nav mode" id="modeToggle">Main Story</button>
 
+    <!-- City Redirectory -->
     <div class="mapbtn navbtn getOut">
         <a href="city.html">
             <button class="label">
@@ -25,18 +26,21 @@
         </a>
     </div>
 
+    <!-- Quest -->
     <div class="mapbtn quest" data-scene="quest" onclick="handleLocation('quest')">
         <button class="label">
             <img class="icons" src="imgs/icons/book_syokendai.png" alt=""><br>
             Quest</button>
     </div>
 
+    <!-- Store -->
     <div class="mapbtn store" data-scene="store" onclick="handleLocation('guildStore')">
         <button class="label">
             <img class="icons" src="imgs/icons/kaizoku_takarabako.png" alt=""><br>
             Store</button>
     </div>
 
+    <!-- Canteen -->
     <div class="mapbtn canteen" data-scene="canteen" onclick="handleLocation('canteen')">
         <button class="label">
             <img class="icons" src="imgs/icons/chuuka_turntable_yamucha.png" alt=""><br>
@@ -44,6 +48,7 @@
     </div>
 </body>
 <script>
+    // Loads the ost for the website
     const audio = document.getElementById("cityOst");
     const button = document.getElementById("musicBtn");
     audio.volume = 0.5;
@@ -52,7 +57,7 @@
         button.textContent = audio.muted ? "Unmute" : "Mute";
         audio.pause();
     }
-    // STORY ORDER
+    // Stoary Order
     const mainStoryOrder = [
         "inn",
         "quest",
@@ -81,7 +86,7 @@
 
         localStorage.setItem("gameState", JSON.stringify(gameState));
     }
-    // MODE TOGGLE BUTTON
+    // Change story mode
     const toggleBtn = document.getElementById("modeToggle");
 
     function updateButton() {
@@ -89,6 +94,7 @@
             gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
     }
 
+    // Gray out the non active story nodes
     function updateMapState() {
 
         const currentMQ = mainStoryOrder[gameState.progress];
@@ -130,7 +136,7 @@
     updateButton();
     updateMapState();
 
-    // LOCATION HANDLER
+    // Handles Location
     function handleLocation(scene) {
 
         if (gameState.mode === "main") {

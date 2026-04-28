@@ -1,5 +1,5 @@
 console.log("Return URL:", localStorage.getItem("returnURL"));
-// CHARACTER DATA
+// Character Data
 const characters = {
     Alann: {
         name: "Alann",
@@ -31,6 +31,7 @@ const characters = {
     }
 };
 
+// Enemy Data
 const enemies = {
     Kuma: {
         name: "Bear",
@@ -90,6 +91,7 @@ const enemies = {
     }
 };
 
+// Battle Scripts
 const storyBattles = {
     alann_vs_knight: {
         player: "Alann",
@@ -125,13 +127,13 @@ const storyBattles = {
     }
 };
 
-// GAME STATE
+// Battle state
 let player;
 let enemy;
 let playerTurn = true;
 let battleStarted = false;
 
-// DOM CONTENT LOADED
+// DOM
 document.addEventListener("DOMContentLoaded", () => {
 
     const battleID = localStorage.getItem("battleID");
@@ -140,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const playerSelect = document.getElementById("playerSelect");
     const confirmBtn = document.getElementById("confirmSelection");
 
-    // STORY MODE
+    // For Story Battle
     if (battleID && storyBattles[battleID]) {
 
         const battle = storyBattles[battleID];
@@ -156,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
         battleMusic.volume = 0.5;
         battleMusic.play();
     }
-    // DUNGEON MODE
+    // For Dungeon
     else {
 
 
@@ -183,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Buttons (always active)
+    // Buttons
     document.getElementById("returnBtn").addEventListener("click", returnToPreviousPage);
     document.getElementById("retryBtn").addEventListener("click", retryBattle);
     document.getElementById("rollBtn").addEventListener("click", startBattle);
@@ -210,13 +212,13 @@ function resetBattleState() {
     document.querySelector(".enemyImg").classList.remove("defeated");
 }
 
-// RANDOM ENEMY
+// Enemy generator for the dungeon
 function getRandomEnemyKey() {
     const enemyKeys = Object.keys(enemies);
     return enemyKeys[Math.floor(Math.random() * enemyKeys.length)];
 }
 
-// LOAD BATTLE
+// Load Battle
 function loadBattle(playerChoice, enemyChoice) {
 
     localStorage.setItem("lastPlayerKey", playerChoice);
@@ -238,11 +240,12 @@ function loadBattle(playerChoice, enemyChoice) {
     updateHPDisplay();
 }
 
-// DICE SYSTEM
+// D20
 function diceRoll() {
     return Math.floor(Math.random() * 20) + 1;
 }
 
+// D20 result
 function checkDiceRoll(num) {
     if (num === 1) return "Bad";
     else if (num <= 5) return "Fine";
@@ -252,7 +255,7 @@ function checkDiceRoll(num) {
     else return "Critical";
 }
 
-// DAMAGE SYSTEM
+// Dmg system
 function dealDamage(roll, atk, event) {
     if (event === "Bad") return 0;
     if (event === "Fine") return atk + (roll - 6);
@@ -266,7 +269,7 @@ function dealDamage(roll, atk, event) {
 function updateHPDisplay() {
     if (!player || !enemy) return;
 
-    const pMax = player.maxHP || player.maxHp; 
+    const pMax = player.maxHP || player.maxHp;
     const eMax = enemy.maxHP || enemy.maxHp;
 
     let playerPercent = (player.hp / pMax) * 100;
@@ -286,7 +289,7 @@ function updateHPDisplay() {
     document.getElementById("EnemyHP").innerHTML = enemy.name + " HP: " + enemy.hp + "<br><br>Atk: " + enemy.atk;
 }
 
-// BATTLE LOGIC
+// Turn Based System
 function startBattle() {
 
     if (!battleStarted) {
@@ -339,7 +342,7 @@ function startBattle() {
     checkBattleEnd();
 }
 
-// END BATTLE
+// Ends Batle
 function checkBattleEnd() {
     const battleMusic = document.getElementById("battleMusic");
     const victorySound = document.getElementById("victorySound");
@@ -402,6 +405,7 @@ function returnToPreviousPage() {
     }
 }
 
+// Restart the battle if player died
 function retryBattle() {
 
     const mode = localStorage.getItem("battleMode");

@@ -17,6 +17,7 @@
   <button class="nav" id="musicBtn" onclick="toggleMusic()">Mute</button>
   <button class="nav mode" id="modeToggle">Main Story</button>
 
+  <!-- Forest Redirectory  -->
   <div class="mapbtn navbtn faeforest">
     <a href="forest.html"> <br>
       <button class="label"><img class="icons" src="imgs/icons/mori.png" alt="">
@@ -24,30 +25,35 @@
     </a>
   </div>
 
+  <!-- Stable -->
   <div class="mapbtn stable" data-scene="stable" onclick="handleLocation('stable')">
     <button class="label">
       <img class="icons" src="imgs/icons/animal_character_uma_ninjin.png" alt=""><br>
       Stable</button>
   </div>
 
+  <!-- Festival -->
   <div class="mapbtn festival" data-scene="festival" onclick="handleLocation('festival')">
     <button class="label">
       <img class="icons" src="imgs/icons/drink_sparkling_wine.png" alt=""><br>
       Festival</button>
   </div>
 
+  <!-- Ruins -->
   <div class="mapbtn faeeRuins" data-scene="ruin" onclick="handleLocation('ruin')">
     <button class="label">
       <img class="icons" src="imgs/icons/landmark_kanjou_mokuchuuretsu.png" alt=""><br>
       Ruins</button>
   </div>
 
+  <!-- Faee Castle -->
   <div class="mapbtn faeeCastle" data-scene="faecastle" onclick="handleLocation('faecastle')">
     <button class="label">
       <img class="icons" src="imgs/icons/building_europe_kojou.png" alt=""><br>
       Castle</button>
   </div>
 
+  <!-- Faee market -->
   <div class="mapbtn faeeMarket" data-scene="faemarket" onclick="handleLocation('faemarket')">
     <button class="label">
       <img class="icons" src="imgs/icons/ichiba_marusye.png" alt=""><br>
@@ -56,6 +62,7 @@
 
 </body>
 <script>
+  // Loads the ost for the website
   const audio = document.getElementById("cityOst");
   const button = document.getElementById("musicBtn");
   audio.volume = 0.5;
@@ -64,7 +71,7 @@
     button.textContent = audio.muted ? "Unmute" : "Mute";
     audio.pause();
   }
-  // STORY ORDER
+  // Stoary Order
   const mainStoryOrder = [
     "inn",
     "quest",
@@ -93,7 +100,7 @@
 
     localStorage.setItem("gameState", JSON.stringify(gameState));
   }
-  // MODE TOGGLE BUTTON
+  // Change story mode
   const toggleBtn = document.getElementById("modeToggle");
 
   function updateButton() {
@@ -105,6 +112,7 @@
     return scene.split("_")[0];
   }
 
+  // Gray out the non active story nodes
   function updateMapState() {
 
     const isComplete = gameState.progress >= mainStoryOrder.length;
@@ -150,7 +158,6 @@
   }
 
 
-
   toggleBtn.addEventListener("click", () => {
     gameState.mode = gameState.mode === "main" ? "side" : "main";
 
@@ -163,6 +170,7 @@
   updateButton();
   updateMapState();
 
+  // For nodes with multiple sotries
   const storyTriggers = {
     festival: [
       { unlockAt: 5, scene: "festival_1" },
@@ -175,8 +183,7 @@
     ]
   };
 
-  updateButton();
-  // LOCATION HANDLER
+  // Handles Location
   function handleLocation(scene) {
 
     if (gameState.mode === "main") {

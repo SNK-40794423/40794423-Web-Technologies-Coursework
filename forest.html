@@ -19,6 +19,8 @@
   <br>
   <br>
   <br>
+
+  <!-- City Redirectory -->
   <div class="mapbtn navbtn toCity">
     <a href="city.html">
       <button class="label">
@@ -27,12 +29,14 @@
     </a>
   </div>
 
+  <!-- Lake -->
   <div class="mapbtn lake" data-scene="lake" onclick="handleLocation('lake')">
     <button class="label">
       <img class="icons" src="imgs/icons/mizuumi.png" alt=""> <br>
       Lake</button>
   </div>
 
+  <!-- Faee Redirectory -->
   <div class="mapbtn navbtn faee">
     <a href="faee.html"> <br>
       <button class="label"><img class="icons" src="imgs/icons/gaisenmon.png" alt="">
@@ -40,12 +44,14 @@
     </a>
   </div>
 
+  <!-- Ravine -->
   <div class="mapbtn ravine" data-scene="ravine" onclick="handleLocation('ravine')">
     <button class="label">
       <img class="icons" src="imgs/icons/yama_kiri.png" alt=""><br>
       Ravine</button>
   </div>
 
+  <!-- Dungeon -->
   <div class="mapbtn navbtn dungeon">
     <a href="battle.html">
       <button class="label">
@@ -57,6 +63,7 @@
 
 </body>
 <script>
+  // Loads the ost for the website
   const audio = document.getElementById("cityOst");
   const button = document.getElementById("musicBtn");
   audio.volume = 0.5;
@@ -65,7 +72,7 @@
     button.textContent = audio.muted ? "Unmute" : "Mute";
     audio.pause();
   }
-  // STORY ORDER
+  // Stoary Order
   const mainStoryOrder = [
     "inn",
     "quest",
@@ -95,7 +102,7 @@
 
     localStorage.setItem("gameState", JSON.stringify(gameState));
   }
-  // MODE TOGGLE BUTTON
+  // Change story mode
   const toggleBtn = document.getElementById("modeToggle");
 
   function updateButton() {
@@ -103,6 +110,7 @@
       gameState.mode === "main" ? "Mode: Main Story" : "Mode: Side Story";
   }
 
+  // Gray out the non active story nodes
   function updateMapState() {
 
     const currentMQ = mainStoryOrder[gameState.progress];
@@ -143,7 +151,7 @@
 
   updateButton();
   updateMapState();
-  // LOCATION HANDLER
+  // Handles Location
   function handleLocation(scene) {
 
     if (gameState.mode === "main") {

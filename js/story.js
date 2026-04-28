@@ -13,7 +13,7 @@ const scene = urlParams.get("scene");
 let stageSlots = [null, null, null]; // [left, right, center]
 let replaceIndex = 0; // controls replacement order
 
-// GMAE STATE
+// Game State
 let gameState = {
     mode: "main",
     progress: 0
@@ -26,7 +26,7 @@ if (saved) {
 
 const bgmPlayer = document.getElementById("bgm");
 
-
+// Redirects the nodes to corresponding story
 function handleLocation(scene) {
 
     if (gameState.mode === "main") {
@@ -44,8 +44,7 @@ function handleLocation(scene) {
     }
 }
 
-// CHARACTER DATABASE
-
+// Character image database
 const characters = {
     Ed: "imgs/chara/Ed.png",
     Zael: "imgs/chara/Za'el.png",
@@ -68,7 +67,7 @@ const characters = {
 
 let activeCharacters = [];
 
-// ELEMENT REFERENCES
+// Ref Elements
 
 const nameDisplay = document.getElementById("character-name");
 const background = document.getElementById("background");
@@ -80,6 +79,7 @@ function normalizeName(name) {
     return name.replace(/[^A-Za-z]/g, "");
 }
 
+// reads the json file for the story
 fetch("json/stories.json")
     .then(response => response.json())
     .then(stories => {
@@ -114,7 +114,8 @@ fetch("json/stories.json")
         localStorage.removeItem("storyIndex");
 
     });
-// SETUP CHARACTERS FOR SCENE
+
+// Setting up Characters for the scene
 function updateCharacterStage(speaker) {
 
     const container = document.getElementById("story-container");
@@ -145,6 +146,7 @@ function updateCharacterStage(speaker) {
     console.log("Stage Slots:", stageSlots);
 }
 
+// Creating a list of characters for the story
 function createCharacter(key, slotIndex) {
 
     const container = document.getElementById("story-container");
@@ -170,6 +172,7 @@ function createCharacter(key, slotIndex) {
     container.appendChild(img);
 }
 
+// Update the dialogue for the story
 function updateDialogue() {
 
     if (currentLine >= dialogue.length) {
@@ -180,13 +183,13 @@ function updateDialogue() {
                 gameState.progress++;
                 localStorage.setItem("gameState", JSON.stringify(gameState));
 
-                // END GAME CHECK
+                // End of main story check
                 if (gameState.progress >= mainStoryOrder.length) {
                     window.location.href = "credits.html";
                     return;
                 }
 
-                // REDIRECT CHECK
+                // Redirecting for faee main story
                 if (faeeScenes.includes(scene)) {
                     window.location.href = "faee.html";
                     return;
@@ -197,7 +200,7 @@ function updateDialogue() {
         return;
     }
 
-    // DIALOGUE RENDERING CODE
+    // Renders the Dialogue
     const event = dialogue[currentLine];
 
     if (event.type === "battle") {
@@ -226,7 +229,7 @@ function updateDialogue() {
     }
 }
 
-// EVENTS
+// Events
 document.getElementById("dialogue-box").addEventListener("click", () => {
     currentLine++;
     updateDialogue();
@@ -236,6 +239,7 @@ document.getElementById("menuBtn").addEventListener("click", () => {
     window.history.back();
 });
 
+// Check whether the next scene is story or battle
 function processStoryEvent(event) {
 
     if (event.type === "dialogue") {
@@ -247,6 +251,7 @@ function processStoryEvent(event) {
     }
 }
 
+// Starts the battle for story
 function triggerBattle(battleID) {
 
     localStorage.setItem("battleID", battleID);
